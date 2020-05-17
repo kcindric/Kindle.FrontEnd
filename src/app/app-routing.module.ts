@@ -10,10 +10,15 @@ import {
 } from '@nebular/auth';
 
 export const routes: Routes = [
+  // {
+  //   path: 'pages',
+  //   loadChildren: () => import('./pages/pages.module')
+  //     .then(m => m.PagesModule),
+  // },
   {
-    path: 'pages',
-    loadChildren: () => import('./pages/pages.module')
-      .then(m => m.PagesModule),
+    path: 'upload',
+    loadChildren: () => import('./upload/upload.module')
+      .then(m => m.UploadModule),
   },
   {
     path: 'auth',
@@ -45,8 +50,8 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
-  { path: '**', redirectTo: 'pages' },
+  { path: '', redirectTo: 'upload', pathMatch: 'full' },
+  { path: '**', redirectTo: 'upload' },
 ];
 
 const config: ExtraOptions = {
