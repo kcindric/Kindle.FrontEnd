@@ -21,6 +21,7 @@ import {
   HeaderComponent,
   SearchInputComponent,
   TinyMCEComponent,
+  UploadFileComponent,
 } from './components';
 import {
   CapitalizePipe,
@@ -38,6 +39,7 @@ import { DEFAULT_THEME } from './styles/theme.default';
 import { COSMIC_THEME } from './styles/theme.cosmic';
 import { CORPORATE_THEME } from './styles/theme.corporate';
 import { DARK_THEME } from './styles/theme.dark';
+import { DragDropDirective } from './directives/drag-drop.directive';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -61,6 +63,8 @@ const COMPONENTS = [
   OneColumnLayoutComponent,
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
+  UploadFileComponent,
+  DragDropDirective,
 ];
 const PIPES = [
   CapitalizePipe,
