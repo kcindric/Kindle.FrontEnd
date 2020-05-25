@@ -38,10 +38,10 @@ export const MainLayout: FC = ({ children }) => {
       >
         <Sider sx={{ zIndex: 1, position: 'relative' }} collapsed={collapsed}>
           <Menu>
-            <NextLink href="/" passHref>
+            <NextLink href="/" as={`${process.env.linkPrefix}/`} passHref>
               <MenuItem icon={<AiOutlineUpload sx={{ width: '28px', height: '28px' }} />}>Upload</MenuItem>
             </NextLink>
-            <NextLink href="/highlights" passHref>
+            <NextLink href="/highlights" as={`${process.env.linkPrefix}/highlights`} passHref>
               <MenuItem icon={<AiOutlineHighlight sx={{ width: '28px', height: '28px' }} />}>Highlights</MenuItem>
             </NextLink>
           </Menu>

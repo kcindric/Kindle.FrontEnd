@@ -5,6 +5,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "export": "next export",
+    "deploy": "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix out origin gh-pages",
     "analyze": "ANALYZE=true next build",
     "type-check": "tsc"
   },
@@ -22,6 +24,7 @@
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
     "@types/theme-ui__components": "^0.2.5",
+    "next-compose-plugins": "^2.2.0",
     "typescript": "3.7.3"
   },
   "license": "ISC"
