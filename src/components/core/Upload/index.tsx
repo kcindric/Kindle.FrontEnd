@@ -5,7 +5,7 @@ import { useDropzone } from 'react-dropzone';
 import { Text, Styled } from 'theme-ui';
 
 export const Upload: FC = () => {
-  const onDrop = useCallback((acceptedFiles) => {
+  const onDrop = useCallback((_acceptedFiles) => {
     // Do something with the files
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
