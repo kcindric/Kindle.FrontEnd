@@ -39,17 +39,17 @@ export const MainLayout: FC = ({ children }) => {
         <Sider sx={{ zIndex: 1, position: 'relative' }} collapsed={collapsed}>
           <Menu>
             <NextLink href="/" as={`${process.env.linkPrefix}/`} passHref>
-              <MenuItem icon={<AiOutlineUpload sx={{ width: '28px', height: '28px' }} />}>Upload</MenuItem>
+              <MenuItem icon={<AiOutlineUpload />}>Upload</MenuItem>
             </NextLink>
             <NextLink href="/highlights" as={`${process.env.linkPrefix}/highlights`} passHref>
-              <MenuItem icon={<AiOutlineHighlight sx={{ width: '28px', height: '28px' }} />}>Highlights</MenuItem>
+              <MenuItem icon={<AiOutlineHighlight />}>Highlights</MenuItem>
             </NextLink>
           </Menu>
         </Sider>
         <main
           sx={{
             position: 'relative',
-            bg: 'gray.2',
+            bg: 'muted',
             flex: 1,
             zIndex: 0,
             display: 'flex',
