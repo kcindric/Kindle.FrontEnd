@@ -10,10 +10,11 @@ export const AuthLayout: FC<IAuthLayoutProps> = ({ children }) => {
       sx={{
         display: 'flex',
         width: '100%',
-        height: '100%',
+        minHeight: '100%',
         justifyContent: 'center',
         alignItems: 'center',
         bg: 'muted',
+        p: 4,
       }}
     >
       {children}

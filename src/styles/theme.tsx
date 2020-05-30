@@ -384,6 +384,7 @@ export const styles = {
   a: {
     color: 'primary',
     textDecoration: 'none',
+    cursor: 'pointer',
     ':hover': {
       textDecoration: 'underline',
     },
