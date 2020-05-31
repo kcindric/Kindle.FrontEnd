@@ -51,7 +51,7 @@ export const MenuItem: FC<IMenuItemProps> = forwardRef<HTMLAnchorElement, IMenuI
         cursor: 'pointer',
         ...sx,
       }}
-      aria-current={router.pathname === href ? 'page' : undefined}
+      aria-current={router.asPath === href ? 'page' : undefined}
       {...rest}
     >
       {icon && <span sx={{ mr: 2, color: 'textMuted', '& > svg': { width: '20px', height: '20px' } }}>{icon}</span>}
