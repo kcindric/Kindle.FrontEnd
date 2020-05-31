@@ -25,7 +25,7 @@ export default function Login() {
                 Remember me
               </Label>
             </div>
-            <NextLink href="/forgot-password">
+            <NextLink href="/forgot-password" as={`${process.env.linkPrefix}/forgot-password`}>
               <Link>Forgot Password?</Link>
             </NextLink>
           </Flex>
@@ -33,7 +33,7 @@ export default function Login() {
             Login
           </Button>
           <Text sx={{ textAlign: 'center', mt: 3 }}>
-            <NextLink href="/register">
+            <NextLink href="/register" as={`${process.env.linkPrefix}/register`}>
               <Link>Create a New Account</Link>
             </NextLink>
           </Text>

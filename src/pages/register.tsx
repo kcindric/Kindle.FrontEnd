@@ -32,11 +32,11 @@ export default function Login() {
             <div>
               <Label>
                 <Checkbox name="agree" value="yes" ref={register} />I agree to&nbsp;
-                <NextLink href="/terms-of-services">
+                <NextLink href="/terms-of-services" as={`${process.env.linkPrefix}/terms-of-services`}>
                   <Link>Terms</Link>
                 </NextLink>
                 &nbsp;and&nbsp;
-                <NextLink href="/privacy-policy">
+                <NextLink href="/privacy-policy" as={`${process.env.linkPrefix}/privacy-policy`}>
                   <Link>Privacy Policy</Link>
                 </NextLink>
               </Label>
@@ -46,7 +46,7 @@ export default function Login() {
             Sign up
           </Button>
           <Text sx={{ textAlign: 'center', mt: 3 }}>
-            <NextLink href="/login">
+            <NextLink href="/login" as={`${process.env.linkPrefix}/login`}>
               <Link>Go to Log in</Link>
             </NextLink>
           </Text>
