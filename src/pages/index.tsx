@@ -4,6 +4,9 @@ import { useWizard } from 'react-wizard-primitive';
 import { MainLayout } from 'components/layouts/MainLayout';
 import { Upload } from 'components/core/Upload';
 import { Steps, Step } from 'components/core/Steps';
+import { Highlights } from '../components/Highlights';
+
+import highlights from '../data/highlights.json';
 
 export default function Home() {
   const wizard = useWizard();
@@ -27,6 +30,7 @@ export default function Home() {
         )}
         {step2.isActive && (
           <>
+            <Highlights items={highlights} />
             <Button mt={3} onClick={wizard.previousStep}>
               Finish
             </Button>

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "a7993372-e214-4e04-a1d9-21a5b14c4668",
+    "authorTitle": "How to become a beekeeper (I. Horvat; J. Bubalo)",
+    "author": "Ivan Horvat; Josip Bubalo",
+    "title": "How to become a beekeeper",
+    "suggestedAuthors": "Ivan K. Horvat; Josip Bubalo",
+    "suggestedTitle": "How to become a beekeeper, 3rd Edition",
+    "type": 0,
+    "content": "This is a completely new highlight",
+    "similarContent": null,
+    "similarContentId": 0,
+    "status": 1,
+    "similarityScore": 0
+  },
+  {
+    "id": "5261c437-7346-4fd4-9ec0-2386ff1b885c",
+    "authorTitle": "Twenty-Nine Tales (H P Lovecraft)",
+    "author": "H P Lovecraft",
+    "title": "Twenty-Nine Tales",
+    "suggestedAuthors": null,
+    "suggestedTitle": null,
+    "type": 0,
+    "content": "This is an old highlight.",
+    "similarContent": "This is an old highlight.",
+    "similarContentId": 1,
+    "status": 2,
+    "similarityScore": 1
+  },
+  {
+    "id": "8ff7dd10-8fb4-47b5-8252-909c597c2ba6",
+    "authorTitle": "Twenty-Nine Tales (H P Lovecraft)",
+    "author": "H P Lovecraft",
+    "title": "Twenty-Nine Tales",
+    "suggestedAuthors": "H.P. Lovecraft",
+    "suggestedTitle": "The Road to Madness",
+    "type": 0,
+    "content": "This is an old highlight. But with additional content.",
+    "similarContent": "This is an old highlight.",
+    "similarContentId": 1,
+    "status": 3,
+    "similarityScore": 0.745632
+  }
+]
