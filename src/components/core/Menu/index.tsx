@@ -13,10 +13,11 @@ interface IMenuItemProps {
   icon: ReactNode;
   sx?: SxStyleProp;
   href?: string;
+  collapsed?: boolean;
 }
 
 export const MenuItem: FC<IMenuItemProps> = forwardRef<HTMLAnchorElement, IMenuItemProps>(function MenuItem(
-  { children, icon, sx, href, ...rest },
+  { children, icon, sx, href, collapsed, ...rest },
   ref,
 ) {
   const router = useRouter();
@@ -55,7 +56,7 @@ export const MenuItem: FC<IMenuItemProps> = forwardRef<HTMLAnchorElement, IMenuI
       {...rest}
     >
       {icon && <span sx={{ mr: 2, color: 'textMuted', '& > svg': { width: '20px', height: '20px' } }}>{icon}</span>}
-      {children && <span>{children}</span>}
+      {children && <span sx={{ display: collapsed ? 'none' : 'inherit' }}>{children}</span>}
     </a>
   );
 });
