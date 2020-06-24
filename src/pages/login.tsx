@@ -28,7 +28,7 @@ export default function Login() {
 
     try {
       await mutateUser(
-        fetcher('/api/login', {
+        fetcher('/account/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body),
@@ -47,7 +47,7 @@ export default function Login() {
           <Heading as={Styled.h2} sx={{ textAlign: 'center', mb: 3 }}>
             Login form
           </Heading>
-          <Field label="username" name="username" placeholder="Enter email" ref={register} mb={3} />
+          <Field label="username" name="username" placeholder="Enter username" ref={register} mb={3} />
           <Field label="Password" name="password" placeholder="Enter password" ref={register} mb={4} />
           <Flex mb={3} sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
