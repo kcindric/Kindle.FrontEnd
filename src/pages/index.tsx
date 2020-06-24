@@ -5,16 +5,18 @@ import { MainLayout } from 'components/layouts/MainLayout';
 import { Upload } from 'components/core/Upload';
 import { Steps, Step } from 'components/core/Steps';
 import { Highlights } from '../components/Highlights';
+import useUser from '../libs/useUser';
 
 import highlights from '../data/highlights.json';
 
 export default function Home() {
+  const { user } = useUser({ redirectTo: '/login' });
   const wizard = useWizard();
   const step1 = wizard.getStep();
   const step2 = wizard.getStep();
 
   return (
-    <MainLayout>
+    <MainLayout isLoading={!user || user.isLoggedIn === false}>
       <Card sx={{ p: 3 }}>
         <Steps current={wizard.activeStepIndex} sx={{ mb: 4, mt: 3 }}>
           <Step title="Upload" description="Upload your highlights.txt file." />

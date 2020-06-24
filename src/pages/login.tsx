@@ -4,10 +4,41 @@ import { useForm } from 'react-hook-form';
 import NextLink from 'next/link';
 
 import { AuthLayout } from '../components/layouts/AuthLayout';
+import { fetcher } from '../libs/fetcher';
+import useUser from '../libs/useUser';
+
+interface ILoginFieldValues {
+  username: string;
+  password: string;
+}
 
 export default function Login() {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data: any) => console.log(data);
+  const { mutateUser } = useUser({
+    redirectTo: '/',
+    redirectIfFound: true,
+  });
+
+  const { register, handleSubmit } = useForm<ILoginFieldValues>();
+
+  async function onSubmit(data: ILoginFieldValues) {
+    const body = {
+      username: data.username,
+      password: data.password,
+    };
+
+    try {
+      await mutateUser(
+        fetcher('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        }),
+      );
+    } catch (error) {
+      console.error('An unexpected error happened:', error);
+      // setErrorMsg(error.data.message);
+    }
+  }
 
   return (
     <AuthLayout>
@@ -16,7 +47,7 @@ export default function Login() {
           <Heading as={Styled.h2} sx={{ textAlign: 'center', mb: 3 }}>
             Login form
           </Heading>
-          <Field label="Email" name="email" placeholder="Enter email" ref={register} mb={3} />
+          <Field label="username" name="username" placeholder="Enter email" ref={register} mb={3} />
           <Field label="Password" name="password" placeholder="Enter password" ref={register} mb={4} />
           <Flex mb={3} sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
             <div>

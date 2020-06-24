@@ -9,6 +9,7 @@ const config = {
   assetPrefix: !development ? linkPrefix + '/' : '',
   env: {
     linkPrefix: !development ? linkPrefix : '',
+    NEXT_PUBLIC_API_ENDPOINT: 'http://161.35.75.249/api',
   },
 };
 

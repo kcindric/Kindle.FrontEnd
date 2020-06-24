@@ -1,3 +1,5 @@
+import { Theme } from 'theme-ui';
+
 export const borderWidths = {
   px: '1px',
   '0': '0',
@@ -514,7 +516,7 @@ const cards = {
   },
 };
 
-export const tailwind = {
+export const tailwind: Theme = {
   borderWidths,
   breakpoints,
   colors,

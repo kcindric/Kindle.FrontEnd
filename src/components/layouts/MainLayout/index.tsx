@@ -8,7 +8,11 @@ import { Sider } from 'components/Sider';
 import { Menu, MenuItem } from '../../core/Menu';
 import { Header } from '../../core/Header';
 
-export const MainLayout: FC = ({ children }) => {
+interface IMainLayoutProps {
+  isLoading?: boolean;
+}
+
+export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, children }) => {
   const [collapsed, setCollapsed] = useState(false);
 
   const toggle = () => {
@@ -37,18 +41,20 @@ export const MainLayout: FC = ({ children }) => {
         }}
       >
         <Sider sx={{ zIndex: 1, position: 'relative' }} collapsed={collapsed}>
-          <Menu>
-            <NextLink href="/" as={`${process.env.linkPrefix}/`} passHref>
-              <MenuItem collapsed={collapsed} icon={<AiOutlineUpload />}>
-                Upload
-              </MenuItem>
-            </NextLink>
-            <NextLink href="/highlights" as={`${process.env.linkPrefix}/highlights`} passHref>
-              <MenuItem collapsed={collapsed} icon={<AiOutlineHighlight />}>
-                Highlights
-              </MenuItem>
-            </NextLink>
-          </Menu>
+          {isLoading! && (
+            <Menu>
+              <NextLink href="/" as={`${process.env.linkPrefix}/`} passHref>
+                <MenuItem collapsed={collapsed} icon={<AiOutlineUpload />}>
+                  Upload
+                </MenuItem>
+              </NextLink>
+              <NextLink href="/highlights" as={`${process.env.linkPrefix}/highlights`} passHref>
+                <MenuItem collapsed={collapsed} icon={<AiOutlineHighlight />}>
+                  Highlights
+                </MenuItem>
+              </NextLink>
+            </Menu>
+          )}
         </Sider>
         <main
           sx={{
@@ -60,7 +66,7 @@ export const MainLayout: FC = ({ children }) => {
             flexDirection: 'column',
           }}
         >
-          <div sx={{ p: 3, flex: 1 }}>{children}</div>
+          <div sx={{ p: 3, flex: 1 }}>{isLoading && children}</div>
           <footer
             sx={{
               p: 3,
