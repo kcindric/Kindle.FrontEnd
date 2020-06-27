@@ -14,11 +14,11 @@ interface ILoginFieldValues {
 
 export default function Login() {
   const { mutateUser } = useUser({
-    redirectTo: '/',
+    redirectTo: `${process.env.linkPrefix}/`,
     redirectIfFound: true,
   });
 
-  const { register, handleSubmit } = useForm<ILoginFieldValues>();
+  const { register, handleSubmit, formState } = useForm<ILoginFieldValues>();
 
   async function onSubmit(data: ILoginFieldValues) {
     const body = {
@@ -61,7 +61,7 @@ export default function Login() {
             </NextLink>
           </Flex>
           <Button type="submit" sx={{ width: '100%' }}>
-            Login
+            {formState.isSubmitting ? 'Submitting...' : 'Login'}
           </Button>
           <Text sx={{ textAlign: 'center', mt: 3 }}>
             <NextLink href="/register" as={`${process.env.linkPrefix}/register`}>

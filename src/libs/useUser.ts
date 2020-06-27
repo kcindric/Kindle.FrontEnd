@@ -8,7 +8,7 @@ interface IOptions {
 }
 
 export default function useUser({ redirectTo, redirectIfFound }: IOptions = {}) {
-  const { data: user, mutate: mutateUser, error } = useSWR('account/user');
+  const { data: user, mutate: mutateUser, error } = useSWR('/account/user');
 
   useEffect(() => {
     // if no redirect needed, just return (example: already on /dashboard)

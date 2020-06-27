@@ -10,7 +10,7 @@ import useUser from '../libs/useUser';
 import highlights from '../data/highlights.json';
 
 export default function Home() {
-  const { user } = useUser({ redirectTo: '/login' });
+  const { user } = useUser({ redirectTo: `${process.env.linkPrefix}/login` });
   const wizard = useWizard();
   const step1 = wizard.getStep();
   const step2 = wizard.getStep();

@@ -5,7 +5,7 @@ import useUser from '../libs/useUser';
 
 export default function Highlights() {
   const { user } = useUser({
-    redirectTo: '/',
+    redirectTo: `${process.env.linkPrefix}/`,
   });
 
   return (

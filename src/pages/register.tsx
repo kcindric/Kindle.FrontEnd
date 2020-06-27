@@ -8,7 +8,7 @@ import useUser from '../libs/useUser';
 
 export default function Login() {
   useUser({
-    redirectTo: '/',
+    redirectTo: `${process.env.linkPrefix}/`,
     redirectIfFound: true,
   });
 
