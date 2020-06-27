@@ -16,7 +16,7 @@ export default function Home() {
   const step2 = wizard.getStep();
 
   return (
-    <MainLayout isLoading={!user || user.isLoggedIn === false}>
+    <MainLayout isLoading={!user}>
       <Card sx={{ p: 3 }}>
         <Steps current={wizard.activeStepIndex} sx={{ mb: 4, mt: 3 }}>
           <Step title="Upload" description="Upload your highlights.txt file." />

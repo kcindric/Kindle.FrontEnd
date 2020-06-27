@@ -41,7 +41,7 @@ export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, children }) => {
         }}
       >
         <Sider sx={{ zIndex: 1, position: 'relative' }} collapsed={collapsed}>
-          {isLoading! && (
+          {!isLoading && (
             <Menu>
               <NextLink href="/" as={`${process.env.linkPrefix}/`} passHref>
                 <MenuItem collapsed={collapsed} icon={<AiOutlineUpload />}>
@@ -66,7 +66,7 @@ export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, children }) => {
             flexDirection: 'column',
           }}
         >
-          <div sx={{ p: 3, flex: 1 }}>{isLoading && children}</div>
+          <div sx={{ p: 3, flex: 1 }}>{!isLoading && children}</div>
           <footer
             sx={{
               p: 3,

@@ -1,10 +1,14 @@
 export async function fetcher(input: RequestInfo, init?: RequestInit | undefined) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}${input}`, init);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}${input}`, {
+      credentials: 'include',
+      ...init,
+    });
 
-    const data = await response.json();
+    let data;
 
     if (response.ok) {
+      data = await response.json();
       return data;
     }
 

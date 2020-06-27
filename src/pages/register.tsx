@@ -4,8 +4,14 @@ import { useForm } from 'react-hook-form';
 import NextLink from 'next/link';
 
 import { AuthLayout } from '../components/layouts/AuthLayout';
+import useUser from '../libs/useUser';
 
 export default function Login() {
+  useUser({
+    redirectTo: '/',
+    redirectIfFound: true,
+  });
+
   const { register, handleSubmit } = useForm();
   const onSubmit = (data: any) => console.log(data);
 
