@@ -519,9 +519,11 @@ const cards = {
 export const tailwind: Theme = {
   borderWidths,
   breakpoints,
+  // @ts-ignore
   colors,
   fonts,
   fontSizes,
+  // @ts-ignore
   fontWeights,
   letterSpacings,
   lineHeights,
@@ -529,6 +531,7 @@ export const tailwind: Theme = {
   shadows,
   space,
   radii,
+  // @ts-ignore
   zIndices,
   styles,
   buttons,
