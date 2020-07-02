@@ -4,16 +4,43 @@ import { useForm } from 'react-hook-form';
 import NextLink from 'next/link';
 
 import { AuthLayout } from '../components/layouts/AuthLayout';
+import { fetcher } from '../libs/fetcher';
 import useUser from '../libs/useUser';
 
+interface IRegisterFieldValues {
+  username: string;
+  password: string;
+  email: string;
+}
+
 export default function Login() {
-  useUser({
+  const { mutateUser } = useUser({
     redirectTo: `${process.env.linkPrefix}/`,
     redirectIfFound: true,
   });
 
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data: any) => console.log(data);
+  const { register, handleSubmit } = useForm<IRegisterFieldValues>();
+
+  async function onSubmit(data: IRegisterFieldValues) {
+    const body = {
+      username: data.username,
+      password: data.password,
+      email: data.email,
+    };
+
+    try {
+      await mutateUser(
+        fetcher('/api/account/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        }),
+      );
+    } catch (error) {
+      console.error('An unexpected error happened:', error);
+      // setErrorMsg(error.data.message);
+    }
+  }
 
   return (
     <AuthLayout>
@@ -22,18 +49,18 @@ export default function Login() {
           <Heading as={Styled.h2} sx={{ textAlign: 'center', mb: 3 }}>
             Sign up form
           </Heading>
-          <Field label="First name" name="first-name" placeholder="Enter first name" ref={register} mb={3} />
-          <Field label="Last name" name="last-name" placeholder="Enter last name" ref={register} mb={3} />
-          <Field label="Email" name="email" placeholder="Enter email" ref={register} mb={3} />
-          <Field label="Phone number" name="phone" placeholder="Enter a phone number" ref={register} mb={3} />
+          <Field label="Username" name="username" placeholder="Enter username" ref={register} mb={3} />
           <Field label="Password" name="password" placeholder="Enter password" ref={register} mb={3} />
-          <Field
+          <Field label="Email" name="email" placeholder="Enter email" ref={register} mb={3} />
+          {/* <Field label="Phone number" name="phone" placeholder="Enter a phone number" ref={register} mb={3} />
+          <Field label="Password" name="password" placeholder="Enter password" ref={register} mb={3} /> */}
+          {/* <Field
             label="Confirm password"
             name="confirm-password"
             placeholder="Enter password again"
             ref={register}
             mb={4}
-          />
+          /> */}
           <Flex mb={3} sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
               <Label>
