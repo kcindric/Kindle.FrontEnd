@@ -12,7 +12,7 @@ export const breakpoints = ['640px', '768px', '1024px', '1280px'];
 
 export const baseColors = {
   transparent: 'transparent',
-  black: '#000',
+  black: '#1D1F24',
   white: '#fff',
   gray: [null, '#f7fafc', '#edf2f7', '#e2e8f0', '#cbd5e0', '#a0aec0', '#718096', '#4a5568', '#2d3748', '#1a202c'],
   red: [null, '#fff5f5', '#fed7d7', '#feb2b2', '#fc8181', '#f56565', '#e53e3e', '#c53030', '#9b2c2c', '#742a2a'],
