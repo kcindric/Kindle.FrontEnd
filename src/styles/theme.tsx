@@ -141,7 +141,7 @@ export const colors = {
   grayDark: baseColors.gray[8],
   text: baseColors.gray[8],
   background: baseColors.white,
-  primary: baseColors.blue[7],
+  primary: baseColors.yellow[5],
   primaryHover: baseColors.blue[8],
   secondary: baseColors.gray[6],
   muted: baseColors.gray[3],
