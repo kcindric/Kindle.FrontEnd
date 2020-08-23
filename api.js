@@ -18,8 +18,13 @@ const enableCors = function (req, res) {
   }
 };
 
-proxy.on('proxyRes', function (_, req, res) {
+proxy.on('proxyRes', function (proxyRes, req, res) {
   enableCors(req, res);
+
+  if (proxyRes.headers['set-cookie']) {
+    const cookies = proxyRes.headers['set-cookie'].map((cookie) => cookie.replace(/; samesite=none/gi, ''));
+    proxyRes.headers['set-cookie'] = cookies;
+  }
 });
 
 const server = http.createServer(function (req, res) {
@@ -34,7 +39,7 @@ const server = http.createServer(function (req, res) {
 
   proxy.web(req, res, {
     target: 'http://161.35.75.249/',
-    changeOrigin: true,
+    cookieDomainRewrite: '',
   });
 });
 
