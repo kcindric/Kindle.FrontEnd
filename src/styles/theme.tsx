@@ -142,7 +142,7 @@ export const colors = {
   text: baseColors.gray[8],
   background: baseColors.white,
   primary: baseColors.yellow[5],
-  primaryHover: baseColors.blue[8],
+  primaryHover: baseColors.yellow[8],
   secondary: baseColors.gray[6],
   muted: baseColors.gray[3],
   success: baseColors.green[3],
