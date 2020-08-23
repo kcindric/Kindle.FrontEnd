@@ -9,7 +9,7 @@ export default function Highlights() {
   });
 
   return (
-    <MainLayout isLoading={!user}>
+    <MainLayout isLoading={!user} user={user}>
       <Card>highlights</Card>
     </MainLayout>
   );

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, IconButton, Heading, Box } from 'theme-ui';
+import { jsx, IconButton, Heading, Box, Avatar, Text, Flex } from 'theme-ui';
 import { useState, FC } from 'react';
 import { AiOutlineMenuUnfold, AiOutlineMenuFold, AiOutlineUpload, AiOutlineHighlight } from 'react-icons/ai';
 import NextLink from 'next/link';
@@ -7,12 +7,14 @@ import NextLink from 'next/link';
 import { Sider } from 'components/Sider';
 import { Menu, MenuItem } from '../../core/Menu';
 import { Header } from '../../core/Header';
+import { IUser } from '../../../interfaces/IUser';
 
 interface IMainLayoutProps {
   isLoading?: boolean;
+  user?: IUser;
 }
 
-export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, children }) => {
+export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, user, children }) => {
   const [collapsed, setCollapsed] = useState(false);
 
   const toggle = () => {
@@ -30,7 +32,15 @@ export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, children }) => {
           )}
         </IconButton>
         <Box sx={{ mx: 3, width: '1px', height: '20px', bg: 'gray.3' }} />
-        <Heading>Linia</Heading>
+        <Flex sx={{ flex: 1, justifyContent: 'space-between' }}>
+          <Heading>Linia</Heading>
+          {user && (
+            <Flex sx={{ justifyContent: 'center' }}>
+              <Avatar width="32px" height="32px" src="/images/avatar.jpg" />
+              <Text sx={{ ml: 2 }}>{user.username}</Text>
+            </Flex>
+          )}
+        </Flex>
       </Header>
       <div
         sx={{
