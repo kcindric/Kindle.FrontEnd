@@ -21,17 +21,12 @@ export default function Login() {
   const { register, handleSubmit, formState } = useForm<ILoginFieldValues>();
 
   async function onSubmit(data: ILoginFieldValues) {
-    const body = {
-      username: data.username,
-      password: data.password,
-    };
-
     try {
       await mutateUser(
         fetcher('/account/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body),
+          body: JSON.stringify(data),
         }),
       );
     } catch (error) {
@@ -52,7 +47,7 @@ export default function Login() {
           <Flex mb={3} sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
               <Label>
-                <Checkbox name="rememberMe" value="yes" ref={register} />
+                <Checkbox name="rememberMe" ref={register} />
                 Remember me
               </Label>
             </div>
