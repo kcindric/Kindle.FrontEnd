@@ -8,6 +8,7 @@ import { Sider } from 'components/Sider';
 import { Menu, MenuItem } from '../../core/Menu';
 import { Header } from '../../core/Header';
 import { IUser } from '../../../interfaces/IUser';
+import { Gravatar } from '../../Gravatar';
 
 interface IMainLayoutProps {
   isLoading?: boolean;
@@ -36,8 +37,7 @@ export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, user, children }) 
           <Heading>Linia</Heading>
           {user && (
             <Flex sx={{ justifyContent: 'center' }}>
-              <Avatar width="32px" height="32px" src="/images/avatar.jpg" />
-              <Text sx={{ ml: 2 }}>{user.username}</Text>
+              <Gravatar size="32px" email={user.email} />
             </Flex>
           )}
         </Flex>

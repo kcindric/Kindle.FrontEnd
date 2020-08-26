@@ -52,7 +52,7 @@ export default function Login() {
           <Flex mb={3} sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
               <Label>
-                <Checkbox name="remember-me" value="yes" ref={register} />
+                <Checkbox name="rememberMe" value="yes" ref={register} />
                 Remember me
               </Label>
             </div>
