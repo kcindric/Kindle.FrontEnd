@@ -9,6 +9,7 @@ import { Menu, MenuItem } from '../../core/Menu';
 import { Header } from '../../core/Header';
 import { IUser } from '../../../interfaces/IUser';
 import { Gravatar } from '../../Gravatar';
+import { Dropdown, DropdownButton, DropdownList, DropdownItem } from '../../core/Dropdown';
 
 interface IMainLayoutProps {
   isLoading?: boolean;
@@ -36,9 +37,14 @@ export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, user, children }) 
         <Flex sx={{ flex: 1, justifyContent: 'space-between' }}>
           <Heading>Linia</Heading>
           {user && (
-            <Flex sx={{ justifyContent: 'center' }}>
-              <Gravatar size="32px" email={user.email} />
-            </Flex>
+            <Dropdown>
+              <DropdownButton>
+                <Gravatar size="32px" email={user.email} />
+              </DropdownButton>
+              <DropdownList>
+                <DropdownItem>User Profile</DropdownItem>
+              </DropdownList>
+            </Dropdown>
           )}
         </Flex>
       </Header>
