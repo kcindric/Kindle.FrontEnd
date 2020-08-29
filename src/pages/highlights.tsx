@@ -1,5 +1,5 @@
 import { MainLayout } from '../components/layouts/MainLayout';
-import { Card } from 'theme-ui';
+import { Card } from '@chakra-ui/core';
 
 import useUser from '../libs/useUser';
 

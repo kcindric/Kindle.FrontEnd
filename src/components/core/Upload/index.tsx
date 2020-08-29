@@ -1,8 +1,8 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui';
+import { jsx } from '@chakra-ui/core';
 import { useCallback, FC } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { Text, Styled } from 'theme-ui';
+import { Text } from '@chakra-ui/core';
 
 export const Upload: FC = () => {
   const onDrop = useCallback((_acceptedFiles) => {
@@ -25,9 +25,9 @@ export const Upload: FC = () => {
     >
       <input {...getInputProps()} />
       {isDragActive ? (
-        <Text as={Styled.p}>Drop the files here ...</Text>
+        <Text>Drop the files here ...</Text>
       ) : (
-        <Text as={Styled.p}>Drag 'n' drop some files here, or click to select files</Text>
+        <Text>Drag 'n' drop some files here, or click to select files</Text>
       )}
     </div>
   );

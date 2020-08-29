@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Heading, Field, Flex, Label, Checkbox, Link, Text, Styled } from 'theme-ui';
+import { Box, Button, Heading, FormControl, Input, Flex, FormLabel, Checkbox, Link, Text } from '@chakra-ui/core';
 import { useForm } from 'react-hook-form';
 import NextLink from 'next/link';
 
@@ -37,20 +37,21 @@ export default function Login() {
 
   return (
     <AuthLayout>
-      <Card sx={{ boxShadow: 'lg', p: 3, minWidth: '400px' }}>
+      <Box sx={{ p: 3, minWidth: '400px', border: '1px', borderColor: 'gray.300' }} bg="white" borderRadius="lg">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Heading as={Styled.h2} sx={{ textAlign: 'center', mb: 3 }}>
-            Login form
-          </Heading>
-          <Field label="username" name="username" placeholder="Enter username" ref={register} mb={3} />
-          <Field label="Password" name="password" placeholder="Enter password" ref={register} mb={4} />
+          <Heading sx={{ textAlign: 'center', mb: 3 }}>Login form</Heading>
+          <FormControl id="username">
+            <FormLabel>Username</FormLabel>
+            <Input name="username" placeholder="Enter username" ref={register} mb={3} />
+          </FormControl>
+          <FormControl id="password">
+            <FormLabel>Password</FormLabel>
+            <Input type="password" name="password" placeholder="Enter password" ref={register} mb={4} />
+          </FormControl>
           <Flex mb={3} sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
-            <div>
-              <Label>
-                <Checkbox name="rememberMe" ref={register} />
-                Remember me
-              </Label>
-            </div>
+            <Checkbox name="rememberMe" ref={register}>
+              Remember me
+            </Checkbox>
             <NextLink href="/forgot-password" as={`${process.env.linkPrefix}/forgot-password`}>
               <Link>Forgot Password?</Link>
             </NextLink>
@@ -64,7 +65,7 @@ export default function Login() {
             </NextLink>
           </Text>
         </form>
-      </Card>
+      </Box>
     </AuthLayout>
   );
 }

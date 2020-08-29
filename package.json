@@ -12,6 +12,8 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@chakra-ui/core": "^1.0.0-rc.2",
+    "@chakra-ui/theme": "^1.0.0-rc.2",
     "@emotion/babel-preset-css-prop": "^10.0.27",
     "cors": "^2.8.5",
     "http-proxy": "^1.18.1",
@@ -23,8 +25,7 @@
     "react-hook-form": "^5.7.2",
     "react-icons": "^3.10.0",
     "react-wizard-primitive": "^2.3.0",
-    "swr": "^0.2.3",
-    "theme-ui": "^0.4.0-rc.1"
+    "swr": "^0.2.3"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^9.4.4",
@@ -32,7 +33,6 @@
     "@types/node": "^14.0.13",
     "@types/react": "^16.9.38",
     "@types/react-dom": "^16.9.8",
-    "@types/theme-ui__components": "^0.2.5",
     "next-compose-plugins": "^2.2.0",
     "typescript": "3.9.5"
   },

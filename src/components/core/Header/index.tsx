@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui';
+import { jsx } from '@chakra-ui/core';
 import { FC } from 'react';
 
 interface IHeaderProps {}
@@ -15,7 +15,7 @@ export const Header: FC<IHeaderProps> = ({ children }) => {
         top: 0,
         left: 0,
         right: 0,
-        bg: 'background',
+        bg: 'white',
         boxShadow: 'lg',
         height: '78px',
         display: 'flex',

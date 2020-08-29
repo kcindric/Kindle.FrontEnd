@@ -1,15 +1,14 @@
 /** @jsx jsx */
-import { jsx, IconButton, Heading, Box, Avatar, Text, Flex } from 'theme-ui';
+import { jsx, IconButton, Heading, Box, Flex, MenuButton, Menu, MenuItem, MenuList } from '@chakra-ui/core';
 import { useState, FC } from 'react';
 import { AiOutlineMenuUnfold, AiOutlineMenuFold, AiOutlineUpload, AiOutlineHighlight } from 'react-icons/ai';
 import NextLink from 'next/link';
 
 import { Sider } from 'components/Sider';
-import { Menu, MenuItem } from '../../core/Menu';
+import { SidebarMenu, SidebarMenuItem } from '../../core/SidebarMenu';
 import { Header } from '../../core/Header';
 import { IUser } from '../../../interfaces/IUser';
 import { Gravatar } from '../../Gravatar';
-import { Dropdown, DropdownButton, DropdownList, DropdownItem } from '../../core/Dropdown';
 
 interface IMainLayoutProps {
   isLoading?: boolean;
@@ -26,56 +25,61 @@ export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, user, children }) 
   return (
     <>
       <Header>
-        <IconButton onClick={toggle}>
-          {collapsed ? (
-            <AiOutlineMenuUnfold sx={{ width: '28px', height: '28px' }} />
-          ) : (
-            <AiOutlineMenuFold sx={{ width: '28px', height: '28px' }} />
-          )}
-        </IconButton>
-        <Box sx={{ mx: 3, width: '1px', height: '20px', bg: 'gray.3' }} />
+        <IconButton
+          aria-label="Menu toggle"
+          variant="ghost"
+          onClick={toggle}
+          icon={
+            collapsed ? (
+              <AiOutlineMenuUnfold sx={{ width: '28px', height: '28px' }} />
+            ) : (
+              <AiOutlineMenuFold sx={{ width: '28px', height: '28px' }} />
+            )
+          }
+        />
+        <Box sx={{ mx: 3, width: '1px', height: '20px', bg: 'gray.300' }} />
         <Flex sx={{ flex: 1, justifyContent: 'space-between' }}>
-          <Heading>Linia</Heading>
+          <Heading as="h1">Linia</Heading>
           {user && (
-            <Dropdown>
-              <DropdownButton>
-                <Gravatar size="32px" email={user.email} />
-              </DropdownButton>
-              <DropdownList>
-                <DropdownItem>User Profile</DropdownItem>
-              </DropdownList>
-            </Dropdown>
+            <Menu>
+              <MenuButton>
+                <Gravatar size="sm" email={user.email} />
+              </MenuButton>
+              <MenuList>
+                <MenuItem onClick={() => {}}>Logout</MenuItem>
+              </MenuList>
+            </Menu>
           )}
         </Flex>
       </Header>
       <div
         sx={{
           pt: '78px',
-          minHeight: '100%',
+          minHeight: '100vh',
           display: 'flex',
           flexDirection: 'row',
         }}
       >
         <Sider sx={{ zIndex: 1, position: 'relative' }} collapsed={collapsed}>
           {!isLoading && (
-            <Menu>
+            <SidebarMenu>
               <NextLink href="/" as={`${process.env.linkPrefix}/`} passHref>
-                <MenuItem collapsed={collapsed} icon={<AiOutlineUpload />}>
+                <SidebarMenuItem collapsed={collapsed} icon={<AiOutlineUpload />}>
                   Upload
-                </MenuItem>
+                </SidebarMenuItem>
               </NextLink>
               <NextLink href="/highlights" as={`${process.env.linkPrefix}/highlights`} passHref>
-                <MenuItem collapsed={collapsed} icon={<AiOutlineHighlight />}>
+                <SidebarMenuItem collapsed={collapsed} icon={<AiOutlineHighlight />}>
                   Highlights
-                </MenuItem>
+                </SidebarMenuItem>
               </NextLink>
-            </Menu>
+            </SidebarMenu>
           )}
         </Sider>
         <main
           sx={{
             position: 'relative',
-            bg: 'muted',
+            bg: 'gray.50',
             flex: 1,
             zIndex: 0,
             display: 'flex',
@@ -86,7 +90,7 @@ export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, user, children }) 
           <footer
             sx={{
               p: 3,
-              bg: 'background',
+              bg: 'white',
               flex: 0,
               boxShadow: 'lg',
             }}

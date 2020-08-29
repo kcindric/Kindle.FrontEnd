@@ -1,5 +1,5 @@
 import React, { FC, forwardRef } from 'react';
-import { Avatar, AvatarProps } from 'theme-ui';
+import { Avatar, AvatarProps } from '@chakra-ui/core';
 import md5 from 'md5';
 
 interface IGravatarProps extends Omit<AvatarProps, 'src' | 'ref'> {

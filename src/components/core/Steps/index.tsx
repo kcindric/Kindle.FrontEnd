@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Text, SxStyleProp } from 'theme-ui';
+import { jsx, Text, SxStyleProp } from '@chakra-ui/core';
 import { FC } from 'react';
 
 interface IStepsProps {

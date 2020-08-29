@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui';
+import { jsx } from '@chakra-ui/core';
 import { FC } from 'react';
 
 interface IHighlightsProps {

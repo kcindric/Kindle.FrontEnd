@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, SxStyleProp } from 'theme-ui';
+import { jsx, SxStyleProp } from '@chakra-ui/core';
 import { FC } from 'react';
 
 interface ISiderProps {

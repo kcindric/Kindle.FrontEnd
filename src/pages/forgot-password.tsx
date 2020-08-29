@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Heading, Field, Styled } from 'theme-ui';
+import { Box, Button, Heading, Input, FormControl, FormLabel } from '@chakra-ui/core';
 import { useForm } from 'react-hook-form';
 
 import { AuthLayout } from '../components/layouts/AuthLayout';
@@ -16,17 +16,20 @@ export default function Login() {
 
   return (
     <AuthLayout>
-      <Card sx={{ boxShadow: 'lg', p: 3, minWidth: '400px' }}>
+      <Box sx={{ boxShadow: 'lg', p: 3, minWidth: '400px' }}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Heading as={Styled.h2} sx={{ textAlign: 'center', mb: 3 }}>
+          <Heading as="h2" size="lg" sx={{ textAlign: 'center', mb: 3 }}>
             Forgot password
           </Heading>
-          <Field label="Email" name="email" placeholder="Enter email" ref={register} mb={3} />
+          <FormControl id="email">
+            <FormLabel>Email address</FormLabel>
+            <Input type="email" name="email" placeholder="Enter email" ref={register} />
+          </FormControl>
           <Button type="submit" sx={{ width: '100%' }}>
             Submit
           </Button>
         </form>
-      </Card>
+      </Box>
     </AuthLayout>
   );
 }

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui';
+import { jsx } from '@chakra-ui/core';
 import { FC } from 'react';
 
 interface IAuthLayoutProps {}
@@ -10,10 +10,10 @@ export const AuthLayout: FC<IAuthLayoutProps> = ({ children }) => {
       sx={{
         display: 'flex',
         width: '100%',
-        minHeight: '100%',
+        minHeight: '100vh',
         justifyContent: 'center',
         alignItems: 'center',
-        bg: 'muted',
+        bg: 'gray.50',
         p: 4,
       }}
     >

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Heading, Field, Flex, Label, Checkbox, Link, Text, Styled } from 'theme-ui';
+import { Box, Button, Heading, Input, Flex, FormLabel, Checkbox, Link, Text, FormControl } from '@chakra-ui/core';
 import { useForm } from 'react-hook-form';
 import NextLink from 'next/link';
 
@@ -44,36 +44,34 @@ export default function Login() {
 
   return (
     <AuthLayout>
-      <Card sx={{ boxShadow: 'lg', p: 3, minWidth: '400px' }}>
+      <Box sx={{ boxShadow: 'lg', p: 3, minWidth: '400px' }}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Heading as={Styled.h2} sx={{ textAlign: 'center', mb: 3 }}>
+          <Heading as="h2" size="xl" sx={{ textAlign: 'center', mb: 3 }}>
             Sign up form
           </Heading>
-          <Field label="Username" name="username" placeholder="Enter username" ref={register} mb={3} />
-          <Field label="Password" name="password" placeholder="Enter password" ref={register} mb={3} />
-          <Field label="Email" name="email" placeholder="Enter email" ref={register} mb={3} />
-          {/* <Field label="Phone number" name="phone" placeholder="Enter a phone number" ref={register} mb={3} />
-          <Field label="Password" name="password" placeholder="Enter password" ref={register} mb={3} /> */}
-          {/* <Field
-            label="Confirm password"
-            name="confirm-password"
-            placeholder="Enter password again"
-            ref={register}
-            mb={4}
-          /> */}
+          <FormControl id="username" mb={3}>
+            <FormLabel>Username</FormLabel>
+            <Input name="username" placeholder="Enter username" ref={register} />
+          </FormControl>
+          <FormControl id="username" mb={3}>
+            <FormLabel>Password</FormLabel>
+            <Input type="password" name="password" placeholder="Enter password" ref={register} />
+          </FormControl>
+          <FormControl id="email" mb={3}>
+            <FormLabel>Email</FormLabel>
+            <Input type="email" name="email" placeholder="Enter email" ref={register} />
+          </FormControl>
           <Flex mb={3} sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
-            <div>
-              <Label>
-                <Checkbox name="agree" value="yes" ref={register} />I agree to&nbsp;
-                <NextLink href="/terms-of-services" as={`${process.env.linkPrefix}/terms-of-services`}>
-                  <Link>Terms</Link>
-                </NextLink>
-                &nbsp;and&nbsp;
-                <NextLink href="/privacy-policy" as={`${process.env.linkPrefix}/privacy-policy`}>
-                  <Link>Privacy Policy</Link>
-                </NextLink>
-              </Label>
-            </div>
+            <Checkbox name="agree" value="yes" ref={register}>
+              I agree to&nbsp;
+              <NextLink href="/terms-of-services" as={`${process.env.linkPrefix}/terms-of-services`}>
+                <Link>Terms</Link>
+              </NextLink>
+              &nbsp;and&nbsp;
+              <NextLink href="/privacy-policy" as={`${process.env.linkPrefix}/privacy-policy`}>
+                <Link>Privacy Policy</Link>
+              </NextLink>
+            </Checkbox>
           </Flex>
           <Button type="submit" sx={{ width: '100%' }}>
             Sign up
@@ -84,7 +82,7 @@ export default function Login() {
             </NextLink>
           </Text>
         </form>
-      </Card>
+      </Box>
     </AuthLayout>
   );
 }
