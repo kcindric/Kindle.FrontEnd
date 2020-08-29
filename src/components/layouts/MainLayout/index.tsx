@@ -1,7 +1,21 @@
 /** @jsx jsx */
-import { jsx, IconButton, Heading, Box, Flex, MenuButton, Menu, MenuItem, MenuList } from '@chakra-ui/core';
+import {
+  jsx,
+  IconButton,
+  Heading,
+  Box,
+  Flex,
+  MenuButton,
+  Menu,
+  MenuItem,
+  MenuList,
+  Button,
+  useColorMode,
+  HStack,
+} from '@chakra-ui/core';
 import { useState, FC } from 'react';
 import { AiOutlineMenuUnfold, AiOutlineMenuFold, AiOutlineUpload, AiOutlineHighlight } from 'react-icons/ai';
+import { FaMoon, FaRegMoon } from 'react-icons/fa';
 import NextLink from 'next/link';
 
 import { Sider } from 'components/Sider';
@@ -17,6 +31,7 @@ interface IMainLayoutProps {
 
 export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, user, children }) => {
   const [collapsed, setCollapsed] = useState(false);
+  const { colorMode, toggleColorMode } = useColorMode();
 
   const toggle = () => {
     setCollapsed((prev) => !prev);
@@ -40,16 +55,21 @@ export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, user, children }) 
         <Box sx={{ mx: 3, width: '1px', height: '20px', bg: 'gray.300' }} />
         <Flex sx={{ flex: 1, justifyContent: 'space-between' }}>
           <Heading as="h1">Linia</Heading>
-          {user && (
-            <Menu>
-              <MenuButton>
-                <Gravatar size="sm" email={user.email} />
-              </MenuButton>
-              <MenuList>
-                <MenuItem onClick={() => {}}>Logout</MenuItem>
-              </MenuList>
-            </Menu>
-          )}
+          <HStack spacing="24px">
+            <Button variant="ghost" onClick={toggleColorMode}>
+              {colorMode === 'light' ? <FaMoon /> : <FaRegMoon />}
+            </Button>
+            {user && (
+              <Menu>
+                <MenuButton>
+                  <Gravatar size="sm" email={user.email} />
+                </MenuButton>
+                <MenuList>
+                  <MenuItem onClick={() => {}}>Logout</MenuItem>
+                </MenuList>
+              </Menu>
+            )}
+          </HStack>
         </Flex>
       </Header>
       <div

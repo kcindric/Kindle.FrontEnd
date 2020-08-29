@@ -56,7 +56,7 @@ export default function Login() {
               <Link>Forgot Password?</Link>
             </NextLink>
           </Flex>
-          <Button type="submit" sx={{ width: '100%' }}>
+          <Button colorScheme="yellow" type="submit" sx={{ width: '100%' }}>
             {formState.isSubmitting ? 'Submitting...' : 'Login'}
           </Button>
           <Text sx={{ textAlign: 'center', mt: 3 }}>

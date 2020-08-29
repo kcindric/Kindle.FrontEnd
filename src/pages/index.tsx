@@ -31,7 +31,7 @@ export default function Home() {
         {step1.isActive && (
           <>
             <Upload />
-            <Button mt={3} onClick={wizard.nextStep}>
+            <Button colorScheme="yellow" mt={3} onClick={wizard.nextStep}>
               Submit
             </Button>
           </>
@@ -39,7 +39,7 @@ export default function Home() {
         {step2.isActive && (
           <>
             <Highlights items={highlights} />
-            <Button mt={3} onClick={wizard.previousStep}>
+            <Button colorScheme="yellow" mt={3} onClick={wizard.previousStep}>
               Finish
             </Button>
           </>
