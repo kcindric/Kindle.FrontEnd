@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/core';
 import { useState, FC } from 'react';
 import { AiOutlineMenuUnfold, AiOutlineMenuFold, AiOutlineUpload, AiOutlineHighlight } from 'react-icons/ai';
-import { FaMoon, FaRegMoon } from 'react-icons/fa';
+import { FaMoon, FaSun } from 'react-icons/fa';
 import NextLink from 'next/link';
 
 import { Sider } from 'components/Sider';
@@ -57,7 +57,7 @@ export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, user, children }) 
           <Heading as="h1">Linia</Heading>
           <HStack spacing="24px">
             <Button variant="ghost" onClick={toggleColorMode}>
-              {colorMode === 'light' ? <FaMoon /> : <FaRegMoon />}
+              {colorMode === 'light' ? <FaMoon /> : <FaSun />}
             </Button>
             {user && (
               <Menu>

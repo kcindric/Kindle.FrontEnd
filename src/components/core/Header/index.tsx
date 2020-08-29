@@ -1,10 +1,13 @@
 /** @jsx jsx */
-import { jsx } from '@chakra-ui/core';
+import { jsx, useColorMode } from '@chakra-ui/core';
+import { mode } from '@chakra-ui/theme-tools';
 import { FC } from 'react';
 
 interface IHeaderProps {}
 
 export const Header: FC<IHeaderProps> = ({ children }) => {
+  const { colorMode } = useColorMode();
+
   return (
     <nav
       sx={{
@@ -15,8 +18,9 @@ export const Header: FC<IHeaderProps> = ({ children }) => {
         top: 0,
         left: 0,
         right: 0,
-        bg: 'white',
-        boxShadow: 'lg',
+        bg: mode('white', 'gray.800')({ colorMode }),
+        borderBottom: '1px',
+        borderBottomColor: mode('gray.300', 'gray.700')({ colorMode }),
         height: '78px',
         display: 'flex',
         flexDirection: 'row',
