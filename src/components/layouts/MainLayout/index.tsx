@@ -23,6 +23,7 @@ import { SidebarMenu, SidebarMenuItem } from '../../core/SidebarMenu';
 import { Header } from '../../core/Header';
 import { IUser } from '../../../interfaces/IUser';
 import { Gravatar } from '../../Gravatar';
+import { fetcher } from '../../../libs/fetcher';
 
 interface IMainLayoutProps {
   isLoading?: boolean;
@@ -65,7 +66,15 @@ export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, user, children }) 
                   <Gravatar size="sm" email={user.email} />
                 </MenuButton>
                 <MenuList>
-                  <MenuItem onClick={() => {}}>Logout</MenuItem>
+                  <MenuItem
+                    onClick={() =>
+                      fetcher('/account/logout', {
+                        method: 'POST',
+                      })
+                    }
+                  >
+                    Logout
+                  </MenuItem>
                 </MenuList>
               </Menu>
             )}

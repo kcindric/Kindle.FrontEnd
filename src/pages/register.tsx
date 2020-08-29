@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Heading, Input, Flex, FormLabel, Checkbox, Link, Text, FormControl } from '@chakra-ui/core';
+import { Box, Button, Heading, Input, FormLabel, Link, Text, FormControl } from '@chakra-ui/core';
 import { useForm } from 'react-hook-form';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
