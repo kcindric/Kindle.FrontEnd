@@ -15,7 +15,7 @@ interface IRegisterFieldValues {
 }
 
 export default function Login() {
-  const { mutateUser } = useUser({
+  useUser({
     redirectTo: `${process.env.linkPrefix}/`,
     redirectIfFound: true,
   });
@@ -47,7 +47,7 @@ export default function Login() {
             <FormLabel>Username</FormLabel>
             <Input name="username" placeholder="Enter username" ref={register} />
           </FormControl>
-          <FormControl id="username" mb={3}>
+          <FormControl id="password" mb={3}>
             <FormLabel>Password</FormLabel>
             <Input type="password" name="password" placeholder="Enter password" ref={register} />
           </FormControl>
@@ -67,7 +67,7 @@ export default function Login() {
               </NextLink>
             </Checkbox>
           </Flex> */}
-          <Button type="submit" sx={{ width: '100%' }}>
+          <Button colorScheme="yellow" type="submit" sx={{ width: '100%' }}>
             Sign up
           </Button>
           <Text sx={{ textAlign: 'center', mt: 3 }}>
