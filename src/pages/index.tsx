@@ -5,21 +5,15 @@ import { MainLayout } from 'components/layouts/MainLayout';
 import { Upload } from 'components/core/Upload';
 import { Steps, Step } from 'components/core/Steps';
 import { Highlights } from '../components/Highlights';
-// import useUser from '../libs/useUser';
+import useUser from '../libs/useUser';
 
 import highlights from '../data/highlights.json';
-import { IUser } from '../interfaces/IUser';
 
 export default function Home() {
-  // const { user } = useUser({ redirectTo: `${process.env.linkPrefix}/login` });
+  const { user } = useUser({ redirectTo: `${process.env.linkPrefix}/login` });
   const wizard = useWizard();
   const step1 = wizard.getStep();
   const step2 = wizard.getStep();
-  const user: IUser = {
-    email: 'mock',
-    userId: '',
-    username: '',
-  };
 
   return (
     <MainLayout isLoading={!user} user={user}>
