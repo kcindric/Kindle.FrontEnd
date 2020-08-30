@@ -12,31 +12,42 @@ import {
   Button,
   useColorMode,
   HStack,
+  Divider,
 } from '@chakra-ui/core';
-import { useState, FC } from 'react';
-import { AiOutlineMenuUnfold, AiOutlineMenuFold, AiOutlineUpload, AiOutlineHighlight } from 'react-icons/ai';
+import { useState, FC, useCallback } from 'react';
+import {
+  AiOutlineMenuUnfold,
+  AiOutlineMenuFold,
+  AiOutlineUpload,
+  AiOutlineHighlight,
+  AiOutlineUser,
+} from 'react-icons/ai';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import NextLink from 'next/link';
 
 import { Sider } from 'components/Sider';
-import { SidebarMenu, SidebarMenuItem } from '../../core/SidebarMenu';
 import { Header } from '../../core/Header';
-import { IUser } from '../../../interfaces/IUser';
 import { Gravatar } from '../../Gravatar';
 import { fetcher } from '../../../libs/fetcher';
+import { SidebarMenu, SidebarMenuItem } from '../../core/SidebarMenu';
+import useUser from '../../../libs/useUser';
 
-interface IMainLayoutProps {
-  isLoading?: boolean;
-  user?: IUser;
-}
-
-export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, user, children }) => {
+export const MainLayout: FC = ({ children }) => {
+  const { user, mutateUser } = useUser({ redirectTo: `${process.env.linkPrefix}/login` });
   const [collapsed, setCollapsed] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
 
   const toggle = () => {
     setCollapsed((prev) => !prev);
   };
+
+  const logout = useCallback(() => {
+    mutateUser(
+      fetcher('/account/logout', {
+        method: 'POST',
+      }),
+    );
+  }, []);
 
   return (
     <>
@@ -61,22 +72,19 @@ export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, user, children }) 
               {colorMode === 'light' ? <FaMoon /> : <FaSun />}
             </Button>
             {user && (
-              <Menu>
-                <MenuButton>
-                  <Gravatar size="sm" email={user.email} />
-                </MenuButton>
-                <MenuList>
-                  <MenuItem
-                    onClick={() =>
-                      fetcher('/account/logout', {
-                        method: 'POST',
-                      })
-                    }
-                  >
-                    Logout
-                  </MenuItem>
-                </MenuList>
-              </Menu>
+              <Box>
+                <Menu>
+                  <MenuButton>
+                    <Gravatar size="sm" email={user.email} />
+                  </MenuButton>
+                  <MenuList>
+                    <NextLink href="/user-settings" as={`${process.env.linkPrefix}/user-settings`} passHref>
+                      <MenuItem as="a">Settings</MenuItem>
+                    </NextLink>
+                    <MenuItem onClick={logout}>Logout</MenuItem>
+                  </MenuList>
+                </Menu>
+              </Box>
             )}
           </HStack>
         </Flex>
@@ -90,7 +98,7 @@ export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, user, children }) 
         }}
       >
         <Sider sx={{ zIndex: 1, position: 'relative' }} collapsed={collapsed}>
-          {!isLoading && (
+          {user && (
             <SidebarMenu>
               <NextLink href="/" as={`${process.env.linkPrefix}/`} passHref>
                 <SidebarMenuItem collapsed={collapsed} icon={<AiOutlineUpload />}>
@@ -104,6 +112,18 @@ export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, user, children }) 
               </NextLink>
             </SidebarMenu>
           )}
+          {user?.roleId === 1 ? (
+            <>
+              <Divider />
+              <SidebarMenu>
+                <NextLink href="/users" as={`${process.env.linkPrefix}/users`} passHref>
+                  <SidebarMenuItem collapsed={collapsed} icon={<AiOutlineUser />}>
+                    Users
+                  </SidebarMenuItem>
+                </NextLink>
+              </SidebarMenu>
+            </>
+          ) : null}
         </Sider>
         <main
           sx={{
@@ -115,7 +135,7 @@ export const MainLayout: FC<IMainLayoutProps> = ({ isLoading, user, children }) 
             flexDirection: 'column',
           }}
         >
-          <div sx={{ p: 3, flex: 1 }}>{!isLoading && children}</div>
+          <div sx={{ p: 3, flex: 1 }}>{user && children}</div>
           <footer
             sx={{
               p: 3,

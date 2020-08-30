@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Router from 'next/router';
 import useSWR from 'swr';
+import { IUser } from '../interfaces/IUser';
 
 interface IOptions {
   redirectTo?: string;
@@ -8,7 +9,7 @@ interface IOptions {
 }
 
 export default function useUser({ redirectTo, redirectIfFound }: IOptions = {}) {
-  const { data: user, mutate: mutateUser, error } = useSWR('/account/user');
+  const { data: user, mutate: mutateUser, error } = useSWR<IUser>('/account/user');
 
   useEffect(() => {
     // if no redirect needed, just return (example: already on /dashboard)

@@ -1,16 +1,10 @@
 import { MainLayout } from '../components/layouts/MainLayout';
-import { Card } from '@chakra-ui/core';
-
-import useUser from '../libs/useUser';
+import { Box } from '@chakra-ui/core';
 
 export default function Highlights() {
-  const { user } = useUser({
-    redirectTo: `${process.env.linkPrefix}/`,
-  });
-
   return (
-    <MainLayout isLoading={!user} user={user}>
-      <Card>highlights</Card>
+    <MainLayout>
+      <Box>highlights</Box>
     </MainLayout>
   );
 }

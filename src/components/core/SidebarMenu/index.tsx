@@ -30,11 +30,9 @@ export const SidebarMenuItem: FC<ISidebarMenuItemProps> = forwardRef<HTMLAnchorE
           px: 3,
           py: 2,
           textDecoration: 'none',
-          color: 'gray.900',
-          fontWeight: 'semibold',
-          fontSize: 0,
-          borderBottom: '1px solid',
-          borderBottomColor: 'gray.300',
+          color: 'gray.800',
+          fontWeight: 'normal',
+          fontSize: 'xl',
           '&:hover': {
             color: 'yellow.500',
             svg: {
@@ -52,8 +50,8 @@ export const SidebarMenuItem: FC<ISidebarMenuItemProps> = forwardRef<HTMLAnchorE
         aria-current={router.asPath === href ? 'page' : undefined}
         {...rest}
       >
-        {icon && <span sx={{ mr: 2, '& > svg': { width: '20px', height: '20px' } }}>{icon}</span>}
-        {children && <span sx={{ display: collapsed ? 'none' : 'inherit' }}>{children}</span>}
+        {icon && <span sx={{ mr: 3, '& > svg': { width: '32px', height: '32px' } }}>{icon}</span>}
+        {children && <span sx={{ display: collapsed ? 'none' : undefined, width: '100%' }}>{children}</span>}
       </a>
     );
   },
