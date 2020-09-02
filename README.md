@@ -4,7 +4,7 @@ Simple app for storing Kindle highlights.
 
 ## Demo
 
-[https://kcindric.github.io/Kindle.FrontEnd/](https://kcindric.github.io/Kindle.FrontEnd/)
+[https://linia-60dhcmzpc.vercel.app](https://linia-60dhcmzpc.vercel.app)
 
 ## How to use it?
 
