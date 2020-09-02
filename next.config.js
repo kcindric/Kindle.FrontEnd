@@ -6,9 +6,9 @@ const development = process.env.NODE_ENV !== 'production';
 const linkPrefix = '/Kindle.FrontEnd';
 
 const config = {
-  assetPrefix: !development ? linkPrefix + '/' : '',
+  assetPrefix: '',
   env: {
-    linkPrefix: !development ? linkPrefix : '',
+    linkPrefix: '',
   },
   optionalCatchAll: true,
 };
