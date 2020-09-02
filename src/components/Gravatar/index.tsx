@@ -3,7 +3,7 @@ import { Avatar, AvatarProps } from '@chakra-ui/core';
 import md5 from 'md5';
 
 interface IGravatarProps extends Omit<AvatarProps, 'src' | 'ref'> {
-  email: string;
+  email?: string;
   fallbackImage?:
     | '404'
     | 'mp'

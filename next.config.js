@@ -10,6 +10,7 @@ const config = {
   env: {
     linkPrefix: !development ? linkPrefix : '',
   },
+  optionalCatchAll: true,
 };
 
 module.exports = withPlugins(
