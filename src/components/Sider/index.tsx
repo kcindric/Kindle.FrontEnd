@@ -1,10 +1,10 @@
 /** @jsx jsx */
-import { jsx, SxStyleProp } from '@chakra-ui/core';
+import { jsx, SystemStyleObject } from '@chakra-ui/core';
 import { FC } from 'react';
 
 interface ISiderProps {
   collapsed: boolean;
-  sx?: SxStyleProp;
+  sx?: SystemStyleObject;
 }
 
 export const Sider: FC<ISiderProps> = ({ children, collapsed, sx }) => {

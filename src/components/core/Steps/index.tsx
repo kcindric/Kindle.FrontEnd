@@ -1,10 +1,10 @@
 /** @jsx jsx */
-import { jsx, Text, SxStyleProp } from '@chakra-ui/core';
+import { jsx, Text, SystemStyleObject } from '@chakra-ui/core';
 import { FC } from 'react';
 
 interface IStepsProps {
   current: number;
-  sx?: SxStyleProp;
+  sx?: SystemStyleObject;
 }
 
 export const Steps: FC<IStepsProps> = ({ children, sx }) => {

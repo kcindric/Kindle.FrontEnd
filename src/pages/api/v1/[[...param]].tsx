@@ -18,7 +18,7 @@ handler.use(
     },
     changeOrigin: true,
     cookieDomainRewrite: '',
-    onProxyRes: (proxyRes, req, res) => {
+    onProxyRes: (proxyRes, _req, _res) => {
       if (proxyRes.headers['set-cookie']) {
         const cookies = proxyRes.headers['set-cookie'].map((cookie) => cookie.replace(/; samesite=none/gi, ''));
         proxyRes.headers['set-cookie'] = cookies;
