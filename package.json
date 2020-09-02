@@ -17,7 +17,7 @@
     "cors": "^2.8.5",
     "http-proxy-middleware": "^1.0.5",
     "md5": "^2.3.0",
-    "next": "^9.5.3",
+    "next": "latest",
     "next-connect": "^0.8.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -35,7 +35,7 @@
     "@types/react": "^16.9.38",
     "@types/react-dom": "^16.9.8",
     "next-compose-plugins": "^2.2.0",
-    "typescript": "3.9.5"
+    "typescript": "^3.9.5"
   },
   "license": "ISC"
 }
