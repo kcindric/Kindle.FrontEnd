@@ -55,6 +55,7 @@ export const MainLayout: FC = ({ children }) => {
         <Box sx={{ mx: 3, width: '1px', height: '20px', bg: 'gray.300' }} />
         <Flex sx={{ flex: 1, justifyContent: 'space-between' }}>
           <Heading as="h1" size="lg">
+            <img src="/images/logo.svg" sx={{ width: '32px', mr: 2, mt: -2, display: 'inline-block' }} />
             Linia
           </Heading>
           <HStack spacing="24px">
