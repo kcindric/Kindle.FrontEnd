@@ -1,9 +1,10 @@
 import React from 'react';
-import { Box, Button, Heading, Input, FormControl, FormLabel } from '@chakra-ui/core';
+import { Button, Heading, Input, FormControl, FormLabel } from '@chakra-ui/core';
 import { useForm } from 'react-hook-form';
 
 import { AuthLayout } from '../components/layouts/AuthLayout';
 import useUser from '../libs/useUser';
+import { Card } from '../components/core/Card';
 
 export default function Login() {
   useUser({
@@ -16,7 +17,7 @@ export default function Login() {
 
   return (
     <AuthLayout>
-      <Box sx={{ boxShadow: 'lg', p: 3, minWidth: '400px' }}>
+      <Card sx={{ boxShadow: 'lg', minWidth: '400px' }}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Heading as="h2" size="lg" sx={{ textAlign: 'center', mb: 3 }}>
             Forgot password
@@ -29,7 +30,7 @@ export default function Login() {
             Submit
           </Button>
         </form>
-      </Box>
+      </Card>
     </AuthLayout>
   );
 }

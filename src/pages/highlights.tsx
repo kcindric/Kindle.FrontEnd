@@ -1,10 +1,10 @@
 import { MainLayout } from '../components/layouts/MainLayout';
-import { Box } from '@chakra-ui/core';
+import { Card } from '../components/core/Card';
 
 export default function Highlights() {
   return (
     <MainLayout>
-      <Box>highlights</Box>
+      <Card>highlights</Card>
     </MainLayout>
   );
 }

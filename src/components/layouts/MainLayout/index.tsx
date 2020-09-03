@@ -12,16 +12,10 @@ import {
   Button,
   useColorMode,
   HStack,
-  Divider,
 } from '@chakra-ui/core';
 import { useState, FC, useCallback } from 'react';
-import {
-  AiOutlineMenuUnfold,
-  AiOutlineMenuFold,
-  AiOutlineUpload,
-  AiOutlineHighlight,
-  AiOutlineUser,
-} from 'react-icons/ai';
+import { mode } from '@chakra-ui/theme-tools';
+import { AiOutlineMenu, AiOutlineUpload, AiOutlineHighlight, AiOutlineUser } from 'react-icons/ai';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import NextLink from 'next/link';
 
@@ -56,17 +50,13 @@ export const MainLayout: FC = ({ children }) => {
           aria-label="Menu toggle"
           variant="ghost"
           onClick={toggle}
-          icon={
-            collapsed ? (
-              <AiOutlineMenuUnfold sx={{ width: '28px', height: '28px' }} />
-            ) : (
-              <AiOutlineMenuFold sx={{ width: '28px', height: '28px' }} />
-            )
-          }
+          icon={<AiOutlineMenu sx={{ width: '20px', height: '20px' }} />}
         />
         <Box sx={{ mx: 3, width: '1px', height: '20px', bg: 'gray.300' }} />
         <Flex sx={{ flex: 1, justifyContent: 'space-between' }}>
-          <Heading as="h1">Linia</Heading>
+          <Heading as="h1" size="lg">
+            Linia
+          </Heading>
           <HStack spacing="24px">
             <Button variant="ghost" onClick={toggleColorMode}>
               {colorMode === 'light' ? <FaMoon /> : <FaSun />}
@@ -113,22 +103,19 @@ export const MainLayout: FC = ({ children }) => {
             </SidebarMenu>
           )}
           {user?.roleId === 1 ? (
-            <>
-              <Divider />
-              <SidebarMenu>
-                <NextLink href="/users" as={`${process.env.linkPrefix}/users`} passHref>
-                  <SidebarMenuItem collapsed={collapsed} icon={<AiOutlineUser />}>
-                    Users
-                  </SidebarMenuItem>
-                </NextLink>
-              </SidebarMenu>
-            </>
+            <SidebarMenu>
+              <NextLink href="/users" as={`${process.env.linkPrefix}/users`} passHref>
+                <SidebarMenuItem collapsed={collapsed} icon={<AiOutlineUser />}>
+                  Users
+                </SidebarMenuItem>
+              </NextLink>
+            </SidebarMenu>
           ) : null}
         </Sider>
         <main
           sx={{
             position: 'relative',
-            bg: 'gray.50',
+            bg: mode('white', 'gray.800')({ colorMode }),
             flex: 1,
             zIndex: 0,
             display: 'flex',
@@ -139,9 +126,9 @@ export const MainLayout: FC = ({ children }) => {
           <footer
             sx={{
               p: 3,
-              bg: 'white',
+              bg: mode('white', 'gray.800')({ colorMode }),
+              color: mode('gray.800', 'whiteAlpha.900')({ colorMode }),
               flex: 0,
-              boxShadow: 'lg',
             }}
           >
             Linia &copy; 2020

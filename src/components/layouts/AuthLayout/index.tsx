@@ -1,10 +1,13 @@
 /** @jsx jsx */
-import { jsx } from '@chakra-ui/core';
+import { jsx, useColorMode } from '@chakra-ui/core';
 import { FC } from 'react';
+import { mode } from '@chakra-ui/theme-tools';
 
 interface IAuthLayoutProps {}
 
 export const AuthLayout: FC<IAuthLayoutProps> = ({ children }) => {
+  const { colorMode } = useColorMode();
+
   return (
     <div
       sx={{
@@ -13,7 +16,7 @@ export const AuthLayout: FC<IAuthLayoutProps> = ({ children }) => {
         minHeight: '100vh',
         justifyContent: 'center',
         alignItems: 'center',
-        bg: 'gray.50',
+        bg: mode('white', 'gray.800')({ colorMode }),
         p: 4,
       }}
     >

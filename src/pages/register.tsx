@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Button, Heading, Input, FormLabel, Link, Text, FormControl } from '@chakra-ui/core';
+/** @jsx jsx */
+import { jsx, Button, Heading, Input, FormLabel, Link, Text, FormControl } from '@chakra-ui/core';
 import { useForm } from 'react-hook-form';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import { AuthLayout } from '../components/layouts/AuthLayout';
 import { fetcher } from '../libs/fetcher';
 import useUser from '../libs/useUser';
+import { Card } from '../components/core/Card';
 
 interface IRegisterFieldValues {
   username: string;
@@ -29,7 +30,7 @@ export default function Login() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      router.replace('/login');
+      await router.replace('/login');
     } catch (error) {
       console.error('An unexpected error happened:', error);
       // setErrorMsg(error.data.message);
@@ -38,7 +39,7 @@ export default function Login() {
 
   return (
     <AuthLayout>
-      <Box sx={{ boxShadow: 'lg', p: 3, minWidth: '400px' }}>
+      <Card sx={{ boxShadow: 'lg', p: 3, minWidth: '400px' }}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Heading as="h2" size="xl" sx={{ textAlign: 'center', mb: 3 }}>
             Sign up form
@@ -76,7 +77,7 @@ export default function Login() {
             </NextLink>
           </Text>
         </form>
-      </Box>
+      </Card>
     </AuthLayout>
   );
 }

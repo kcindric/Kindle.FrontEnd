@@ -1,11 +1,12 @@
-import React from 'react';
-import { Box, Button, Heading, FormControl, Input, Flex, FormLabel, Checkbox, Link, Text } from '@chakra-ui/core';
+/** @jsx jsx */
+import { jsx, Button, Heading, FormControl, Input, Flex, FormLabel, Checkbox, Link, Text } from '@chakra-ui/core';
 import { useForm } from 'react-hook-form';
 import NextLink from 'next/link';
 
 import { AuthLayout } from '../components/layouts/AuthLayout';
 import { fetcher } from '../libs/fetcher';
 import useUser from '../libs/useUser';
+import { Card } from '../components/core/Card';
 
 interface ILoginFieldValues {
   username: string;
@@ -37,7 +38,7 @@ export default function Login() {
 
   return (
     <AuthLayout>
-      <Box sx={{ p: 3, minWidth: '400px', border: '1px', borderColor: 'gray.300' }} bg="white" borderRadius="lg">
+      <Card sx={{ p: 3, minWidth: '400px' }}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Heading sx={{ textAlign: 'center', mb: 3 }}>Login form</Heading>
           <FormControl id="username">
@@ -65,7 +66,7 @@ export default function Login() {
             </NextLink>
           </Text>
         </form>
-      </Box>
+      </Card>
     </AuthLayout>
   );
 }
