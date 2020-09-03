@@ -4,7 +4,7 @@ Simple app for storing Kindle highlights.
 
 ## Demo
 
-[https://linia-60dhcmzpc.vercel.app](https://linia-60dhcmzpc.vercel.app)
+[https://linia-ivicabatinic.liniateam.vercel.app/](https://linia-ivicabatinic.liniateam.vercel.app/)
 
 ## How to use it?
 
