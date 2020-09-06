@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Button, Heading, Input, FormLabel, Link, Text, FormControl } from '@chakra-ui/core';
 import { useForm } from 'react-hook-form';
+import { ErrorMessage } from '@hookform/error-message';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -8,6 +9,7 @@ import { AuthLayout } from '../components/layouts/AuthLayout';
 import { fetcher } from '../libs/fetcher';
 import useUser from '../libs/useUser';
 import { Card } from '../components/core/Card';
+import { IErrorMessage } from '../interfaces/IErrorMessage';
 
 interface IRegisterFieldValues {
   username: string;
@@ -21,7 +23,7 @@ export default function Login() {
     redirectIfFound: true,
   });
   const router = useRouter();
-  const { register, handleSubmit } = useForm<IRegisterFieldValues>();
+  const { register, handleSubmit, errors, setError } = useForm<IRegisterFieldValues>();
 
   async function onSubmit(data: IRegisterFieldValues) {
     try {
@@ -32,8 +34,17 @@ export default function Login() {
       });
       await router.replace('/login');
     } catch (error) {
-      console.error('An unexpected error happened:', error);
-      // setErrorMsg(error.data.message);
+      if (Array.isArray(error.data)) {
+        setError(
+          error.data.map((errorMessage: IErrorMessage) => {
+            return {
+              name: errorMessage.propertyName.toLowerCase(),
+              type: 'manual',
+              message: errorMessage.errorMessage,
+            };
+          }),
+        );
+      }
     }
   }
 
@@ -46,15 +57,16 @@ export default function Login() {
           </Heading>
           <FormControl id="username" mb={3}>
             <FormLabel>Username</FormLabel>
-            <Input name="username" placeholder="Enter username" ref={register} />
+            <Input name="username" placeholder="Enter username" ref={register({ required: true })} />
           </FormControl>
           <FormControl id="password" mb={3}>
             <FormLabel>Password</FormLabel>
-            <Input type="password" name="password" placeholder="Enter password" ref={register} />
+            <Input type="password" name="password" placeholder="Enter password" ref={register({ required: true })} />
           </FormControl>
-          <FormControl id="email" mb={3}>
+          <FormControl id="email" mb={3} isRequired isInvalid={!!errors.email}>
             <FormLabel>Email</FormLabel>
-            <Input type="email" name="email" placeholder="Enter email" ref={register} />
+            <Input type="email" name="email" placeholder="Enter email" ref={register({ required: true })} />
+            <ErrorMessage errors={errors} name="email" />
           </FormControl>
           {/* <Flex mb={3} sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
             <Checkbox name="agree" value="yes" ref={register}>

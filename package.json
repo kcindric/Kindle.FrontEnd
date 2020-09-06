@@ -14,6 +14,7 @@
     "@chakra-ui/core": "^1.0.0-rc.2",
     "@chakra-ui/theme": "^1.0.0-rc.2",
     "@emotion/babel-preset-css-prop": "^10.0.27",
+    "@hookform/error-message": "0.0.4",
     "cors": "^2.8.5",
     "http-proxy-middleware": "^1.0.5",
     "md5": "^2.3.0",
@@ -22,7 +23,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dropzone": "^11.0.1",
-    "react-hook-form": "^5.7.2",
+    "react-hook-form": "^6.7.2",
     "react-icons": "^3.10.0",
     "react-wizard-primitive": "^2.3.0",
     "swr": "^0.2.3"

@@ -5,10 +5,9 @@ export async function fetcher(input: RequestInfo, init?: RequestInit | undefined
       ...init,
     });
 
-    let data;
+    const data = await response.json();
 
     if (response.ok) {
-      data = await response.json();
       return data;
     }
 
@@ -17,6 +16,7 @@ export async function fetcher(input: RequestInfo, init?: RequestInit | undefined
     error.response = response;
     // @ts-ignore
     error.data = data;
+
     throw error;
   } catch (error) {
     if (!error.data) {
