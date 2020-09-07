@@ -53,12 +53,12 @@ export default function Login() {
           <Heading sx={{ textAlign: 'center', mb: 3 }}>Login form</Heading>
           <FormControl id="username" mb={3} isRequired isInvalid={!!errors.username}>
             <FormLabel>Username</FormLabel>
-            <Input name="username" placeholder="Enter username" ref={register} />
+            <Input name="username" placeholder="Enter username" ref={register({ required: true })} />
             <ErrorMessage as={Text} errors={errors} name="username" color="red.600" />
           </FormControl>
           <FormControl id="password" mb={4} isRequired isInvalid={!!errors.password}>
             <FormLabel>Password</FormLabel>
-            <PasswordInput name="password" placeholder="Enter password" ref={register} />
+            <PasswordInput name="password" placeholder="Enter password" ref={register({ required: true })} />
             <ErrorMessage as={Text} errors={errors} name="password" color="red.600" />
           </FormControl>
           <Flex mb={3} sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
