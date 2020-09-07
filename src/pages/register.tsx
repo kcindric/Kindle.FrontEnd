@@ -20,7 +20,7 @@ interface IRegisterFieldValues {
 
 export default function Login() {
   useUser({
-    redirectTo: `${process.env.linkPrefix}/`,
+    redirectTo: `/`,
     redirectIfFound: true,
   });
   const router = useRouter();
