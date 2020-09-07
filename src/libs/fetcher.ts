@@ -5,12 +5,14 @@ export async function fetcher(input: RequestInfo, init?: RequestInit | undefined
       ...init,
     });
 
-    const data = await response.json();
+    const textData = await response.text();
+    const data = textData ? JSON.parse(textData) : {};
 
     if (response.ok) {
       return data;
     }
 
+    debugger;
     const error = new Error(response.statusText);
     // @ts-ignore
     error.response = response;
