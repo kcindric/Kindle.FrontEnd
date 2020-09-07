@@ -10,7 +10,10 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <meta name="theme-color" content="#ffffff" />
+          <link rel="icon" href="favicon.svg" />
+        </Head>
         <body>
           {/* @ts-ignore */}
           <ColorModeScript defaultColorMode="system" />
