@@ -12,7 +12,6 @@ export async function fetcher(input: RequestInfo, init?: RequestInit | undefined
       return data;
     }
 
-    debugger;
     const error = new Error(response.statusText);
     // @ts-ignore
     error.response = response;
