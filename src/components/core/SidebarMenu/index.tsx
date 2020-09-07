@@ -4,10 +4,16 @@ import { mode, transparentize } from '@chakra-ui/theme-tools';
 import { FC, ReactNode, forwardRef } from 'react';
 import { useRouter } from 'next/dist/client/router';
 
-interface ISidebarMenuProps {}
+interface ISidebarMenuProps {
+  sx?: SystemStyleObject;
+}
 
-export const SidebarMenu: FC<ISidebarMenuProps> = ({ children }) => {
-  return <div sx={{ display: 'flex', flexDirection: 'column' }}>{children}</div>;
+export const SidebarMenu: FC<ISidebarMenuProps> = ({ children, ...restProps }) => {
+  return (
+    <div sx={{ display: 'flex', flexDirection: 'column' }} {...restProps}>
+      {children}
+    </div>
+  );
 };
 
 interface ISidebarMenuItemProps {

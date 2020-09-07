@@ -12,6 +12,7 @@ import {
   Button,
   useColorMode,
   HStack,
+  Text,
 } from '@chakra-ui/core';
 import { useState, FC, useCallback } from 'react';
 import { mode } from '@chakra-ui/theme-tools';
@@ -80,62 +81,56 @@ export const MainLayout: FC = ({ children }) => {
           </HStack>
         </Flex>
       </Header>
-      <div
+      <Sider collapsed={collapsed}>
+        {user && (
+          <SidebarMenu sx={{ mt: 3 }}>
+            <NextLink href="/" as={`${process.env.linkPrefix}/`} passHref>
+              <SidebarMenuItem collapsed={collapsed} icon={<AiOutlineUpload />}>
+                Upload
+              </SidebarMenuItem>
+            </NextLink>
+            <NextLink href="/highlights" as={`${process.env.linkPrefix}/highlights`} passHref>
+              <SidebarMenuItem collapsed={collapsed} icon={<AiOutlineHighlight />}>
+                Highlights
+              </SidebarMenuItem>
+            </NextLink>
+          </SidebarMenu>
+        )}
+        {user?.roleId === 1 ? (
+          <SidebarMenu>
+            <NextLink href="/users" as={`${process.env.linkPrefix}/users`} passHref>
+              <SidebarMenuItem collapsed={collapsed} icon={<AiOutlineUser />}>
+                Users
+              </SidebarMenuItem>
+            </NextLink>
+          </SidebarMenu>
+        ) : null}
+        <Text
+          fontSize="xs"
+          py={2}
+          px={3}
+          sx={{ position: 'absolute', left: 0, bottom: 0 }}
+          style={{ opacity: collapsed ? 0 : 1 }}
+        >
+          Linia &copy; 2020
+        </Text>
+      </Sider>
+      <main
         sx={{
-          pt: '78px',
-          minHeight: '100vh',
+          position: 'relative',
+          bg: mode('white', 'gray.800')({ colorMode }),
+          flex: 1,
+          zIndex: 0,
           display: 'flex',
-          flexDirection: 'row',
+          flexDirection: 'column',
+          pt: '58px',
+        }}
+        style={{
+          paddingLeft: collapsed ? '56px' : '256px',
         }}
       >
-        <Sider sx={{ zIndex: 1, position: 'relative' }} collapsed={collapsed}>
-          {user && (
-            <SidebarMenu>
-              <NextLink href="/" as={`${process.env.linkPrefix}/`} passHref>
-                <SidebarMenuItem collapsed={collapsed} icon={<AiOutlineUpload />}>
-                  Upload
-                </SidebarMenuItem>
-              </NextLink>
-              <NextLink href="/highlights" as={`${process.env.linkPrefix}/highlights`} passHref>
-                <SidebarMenuItem collapsed={collapsed} icon={<AiOutlineHighlight />}>
-                  Highlights
-                </SidebarMenuItem>
-              </NextLink>
-            </SidebarMenu>
-          )}
-          {user?.roleId === 1 ? (
-            <SidebarMenu>
-              <NextLink href="/users" as={`${process.env.linkPrefix}/users`} passHref>
-                <SidebarMenuItem collapsed={collapsed} icon={<AiOutlineUser />}>
-                  Users
-                </SidebarMenuItem>
-              </NextLink>
-            </SidebarMenu>
-          ) : null}
-        </Sider>
-        <main
-          sx={{
-            position: 'relative',
-            bg: mode('white', 'gray.800')({ colorMode }),
-            flex: 1,
-            zIndex: 0,
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
-          <div sx={{ p: 3, flex: 1 }}>{user && children}</div>
-          <footer
-            sx={{
-              p: 3,
-              bg: mode('white', 'gray.800')({ colorMode }),
-              color: mode('gray.800', 'whiteAlpha.900')({ colorMode }),
-              flex: 0,
-            }}
-          >
-            Linia &copy; 2020
-          </footer>
-        </main>
-      </div>
+        <div sx={{ p: 3, flex: 1 }}>{user && children}</div>
+      </main>
     </>
   );
 };

@@ -7,15 +7,17 @@ interface ISiderProps {
   sx?: SystemStyleObject;
 }
 
-export const Sider: FC<ISiderProps> = ({ children, collapsed, sx }) => {
+export const Sider: FC<ISiderProps> = ({ children, collapsed, ...restProps }) => {
   return (
     <aside
       sx={{
-        py: 3,
-        boxShadow: 'lg',
+        pt: '58px',
         width: collapsed ? '56px' : '256px',
-        ...sx,
+        height: '100vh',
+        position: 'fixed',
+        zIndex: 1,
       }}
+      {...restProps}
     >
       {children}
     </aside>
