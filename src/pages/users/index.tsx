@@ -9,13 +9,14 @@ import { Card } from '../../components/core/Card';
 import useUser from '../../libs/useUser';
 import { Gravatar } from '../../components/Gravatar';
 import { IUser } from '../../interfaces/IUser';
+import { fetcher } from '../../libs/fetcher';
 
 export default function Users() {
   const { user } = useUser({
     redirectTo: '/login',
   });
 
-  const { data } = useSWR<Array<IUser>, any>(user?.roleId === 1 ? '/account' : null);
+  const { data, mutate } = useSWR<Array<IUser>, any>(user?.roleId === 1 ? '/account' : null);
 
   return (
     <MainLayout>
@@ -43,7 +44,18 @@ export default function Users() {
                   <NextLink href={`/users/${user.userId}`} passHref>
                     <MenuItem as="a">Edit</MenuItem>
                   </NextLink>
-                  <MenuItem color="red.500">Delete</MenuItem>
+                  <MenuItem
+                    color="red.500"
+                    onClick={async () => {
+                      await fetcher(`/account/${user.userId}`, {
+                        method: 'DELETE',
+                        headers: { 'Content-Type': 'application/json' },
+                      });
+                      await mutate();
+                    }}
+                  >
+                    Delete
+                  </MenuItem>
                 </MenuList>
               </Menu>
             </Box>
