@@ -35,15 +35,12 @@ export default function Login() {
       await router.replace('/login');
     } catch (error) {
       if (Array.isArray(error.data)) {
-        setError(
-          error.data.map((errorMessage: IErrorMessage) => {
-            return {
-              name: errorMessage.propertyName.toLowerCase(),
-              type: 'manual',
-              message: errorMessage.errorMessage,
-            };
-          }),
-        );
+        error.data.map((errorMessage: IErrorMessage) => {
+          setError(errorMessage.propertyName.toLowerCase() as any, {
+            type: 'manual',
+            message: errorMessage.errorMessage,
+          });
+        });
       }
     }
   }
@@ -55,18 +52,20 @@ export default function Login() {
           <Heading as="h2" size="xl" sx={{ textAlign: 'center', mb: 3 }}>
             Sign up form
           </Heading>
-          <FormControl id="username" mb={3}>
+          <FormControl id="username" mb={3} isRequired isInvalid={!!errors.username}>
             <FormLabel>Username</FormLabel>
             <Input name="username" placeholder="Enter username" ref={register({ required: true })} />
+            <ErrorMessage as={Text} errors={errors} name="username" color="red.600" />
           </FormControl>
-          <FormControl id="password" mb={3}>
+          <FormControl id="password" mb={3} isRequired isInvalid={!!errors.password}>
             <FormLabel>Password</FormLabel>
             <Input type="password" name="password" placeholder="Enter password" ref={register({ required: true })} />
+            <ErrorMessage as={Text} errors={errors} name="password" color="red.600" />
           </FormControl>
           <FormControl id="email" mb={3} isRequired isInvalid={!!errors.email}>
             <FormLabel>Email</FormLabel>
             <Input type="email" name="email" placeholder="Enter email" ref={register({ required: true })} />
-            <ErrorMessage errors={errors} name="email" />
+            <ErrorMessage as={Text} errors={errors} name="email" color="red.600" />
           </FormControl>
           {/* <Flex mb={3} sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
             <Checkbox name="agree" value="yes" ref={register}>
