@@ -1,4 +1,5 @@
-import { Button } from '@chakra-ui/core';
+/** @jsx jsx */
+import { jsx, Button } from '@chakra-ui/core';
 import { useWizard } from 'react-wizard-primitive';
 
 import { MainLayout } from 'components/layouts/MainLayout';
@@ -16,7 +17,7 @@ export default function Home() {
 
   return (
     <MainLayout>
-      <Card overflow="hidden">
+      <Card overflow="hidden" maxW="lg" m="0 auto">
         <Steps current={wizard.activeStepIndex} sx={{ mb: 4, mt: 3 }}>
           <Step title="Upload" description="Upload your highlights.txt file." />
           <Step title="Finish" description="This is a description." />

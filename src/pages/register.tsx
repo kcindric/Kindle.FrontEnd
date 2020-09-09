@@ -71,11 +71,11 @@ export default function Login() {
           {/* <Flex mb={3} sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
             <Checkbox name="agree" value="yes" ref={register}>
               I agree to&nbsp;
-              <NextLink href="/terms-of-services" as={`${process.env.linkPrefix}/terms-of-services`}>
+              <NextLink href="/terms-of-services" >
                 <Link>Terms</Link>
               </NextLink>
               &nbsp;and&nbsp;
-              <NextLink href="/privacy-policy" as={`${process.env.linkPrefix}/privacy-policy`}>
+              <NextLink href="/privacy-policy" >
                 <Link>Privacy Policy</Link>
               </NextLink>
             </Checkbox>
@@ -84,7 +84,7 @@ export default function Login() {
             Sign up
           </Button>
           <Text sx={{ textAlign: 'center', mt: 3 }}>
-            <NextLink href="/login" as={`${process.env.linkPrefix}/login`}>
+            <NextLink href="/login">
               <Link>Go to Log in</Link>
             </NextLink>
           </Text>

@@ -28,7 +28,7 @@ import { SidebarMenu, SidebarMenuItem } from '../../core/SidebarMenu';
 import useUser from '../../../libs/useUser';
 
 export const MainLayout: FC = ({ children }) => {
-  const { user, mutateUser } = useUser({ redirectTo: `${process.env.linkPrefix}/login` });
+  const { user, mutateUser } = useUser({ redirectTo: '/login' });
   const [collapsed, setCollapsed] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
 
@@ -70,7 +70,7 @@ export const MainLayout: FC = ({ children }) => {
                     <Gravatar size="sm" email={user.email} />
                   </MenuButton>
                   <MenuList>
-                    <NextLink href="/user-settings" as={`${process.env.linkPrefix}/user-settings`} passHref>
+                    <NextLink href="/settings" passHref>
                       <MenuItem as="a">Settings</MenuItem>
                     </NextLink>
                     <MenuItem onClick={logout}>Logout</MenuItem>
@@ -84,12 +84,12 @@ export const MainLayout: FC = ({ children }) => {
       <Sider collapsed={collapsed}>
         {user && (
           <SidebarMenu sx={{ mt: 3 }}>
-            <NextLink href="/" as={`${process.env.linkPrefix}/`} passHref>
+            <NextLink href="/" passHref>
               <SidebarMenuItem collapsed={collapsed} icon={<AiOutlineUpload />}>
                 Upload
               </SidebarMenuItem>
             </NextLink>
-            <NextLink href="/highlights" as={`${process.env.linkPrefix}/highlights`} passHref>
+            <NextLink href="/highlights" passHref>
               <SidebarMenuItem collapsed={collapsed} icon={<AiOutlineHighlight />}>
                 Highlights
               </SidebarMenuItem>
@@ -98,7 +98,7 @@ export const MainLayout: FC = ({ children }) => {
         )}
         {user?.roleId === 1 ? (
           <SidebarMenu>
-            <NextLink href="/users" as={`${process.env.linkPrefix}/users`} passHref>
+            <NextLink href="/users" passHref>
               <SidebarMenuItem collapsed={collapsed} icon={<AiOutlineUser />}>
                 Users
               </SidebarMenuItem>

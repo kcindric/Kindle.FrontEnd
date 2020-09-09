@@ -1,12 +1,11 @@
-import { Editable, EditableInput, EditablePreview } from '@chakra-ui/core';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 
 import { MainLayout } from '../../components/layouts/MainLayout';
 import useUser from '../../libs/useUser';
-import { Gravatar } from '../../components/Gravatar';
 import { Card } from '../../components/core/Card';
 import { IUser } from '../../interfaces/IUser';
+import { UserEditInfo } from '../../components/user/UserEditInfo';
 
 export default function User() {
   useUser({
@@ -19,12 +18,8 @@ export default function User() {
 
   return (
     <MainLayout>
-      <Card>
-        <Gravatar email={user?.email} />
-        <Editable defaultValue={user?.email}>
-          <EditablePreview />
-          <EditableInput />
-        </Editable>
+      <Card maxW="lg" m="0 auto" p={4}>
+        {user && <UserEditInfo user={user} />}
       </Card>
     </MainLayout>
   );

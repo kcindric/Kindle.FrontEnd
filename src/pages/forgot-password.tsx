@@ -8,7 +8,7 @@ import { Card } from '../components/core/Card';
 
 export default function Login() {
   useUser({
-    redirectTo: `${process.env.linkPrefix}/`,
+    redirectTo: `/`,
     redirectIfFound: true,
   });
 

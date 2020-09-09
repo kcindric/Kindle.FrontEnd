@@ -65,7 +65,7 @@ export default function Login() {
             <Checkbox name="rememberMe" ref={register}>
               Remember me
             </Checkbox>
-            <NextLink href="/forgot-password" as={`${process.env.linkPrefix}/forgot-password`}>
+            <NextLink href="/forgot-password">
               <Link>Forgot Password?</Link>
             </NextLink>
           </Flex>
@@ -73,7 +73,7 @@ export default function Login() {
             {formState.isSubmitting ? 'Submitting...' : 'Login'}
           </Button>
           <Text sx={{ textAlign: 'center', mt: 3 }}>
-            <NextLink href="/register" as={`${process.env.linkPrefix}/register`}>
+            <NextLink href="/register">
               <Link>Create a New Account</Link>
             </NextLink>
           </Text>
