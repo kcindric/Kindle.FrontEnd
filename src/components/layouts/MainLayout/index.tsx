@@ -25,6 +25,7 @@ import { Gravatar } from '../../Gravatar';
 import { fetcher } from '../../../libs/fetcher';
 import { SidebarMenu, SidebarMenuItem } from '../../core/SidebarMenu';
 import useUser from '../../../libs/useUser';
+import { MenuUserInfo } from '../../MenuUserInfo';
 
 export const MainLayout: FC = ({ children }) => {
   const { user, mutateUser } = useUser({ redirectTo: '/login' });
@@ -55,7 +56,7 @@ export const MainLayout: FC = ({ children }) => {
             <img src="/images/logo.svg" sx={{ width: '32px', mr: 2, mt: -2, display: 'inline-block' }} />
             Linia
           </Heading>
-          <HStack spacing="24px">
+          <HStack spacing="24px" pr={2}>
             <Button variant="icon" onClick={toggleColorMode}>
               {colorMode === 'light' ? <FaMoon /> : <FaSun />}
             </Button>
@@ -65,7 +66,8 @@ export const MainLayout: FC = ({ children }) => {
                   <MenuButton>
                     <Gravatar size="sm" email={user.email} />
                   </MenuButton>
-                  <MenuList>
+                  <MenuList sx={{ pt: 0 }}>
+                    <MenuUserInfo user={user} />
                     <NextLink href="/settings" passHref>
                       <MenuItem as="a">Settings</MenuItem>
                     </NextLink>
