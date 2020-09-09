@@ -17,12 +17,13 @@ export const Header: FC<IHeaderProps> = ({ children }) => {
         top: 0,
         left: 0,
         right: 0,
-        bg: mode('white', 'gray.800')({ colorMode }),
         borderBottom: '1px',
         borderBottomColor: mode('gray.200', 'gray.700')({ colorMode }),
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
+        backdropFilter: 'saturate(180%) blur(5px)',
+        bg: mode('hsla(0,0%,100%,.8)', 'hsla(220,26%,14%,.8)')({ colorMode }),
       }}
     >
       {children}
