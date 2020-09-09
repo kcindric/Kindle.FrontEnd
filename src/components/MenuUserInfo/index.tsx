@@ -18,17 +18,17 @@ export const MenuUserInfo: FC<IMenuUserInfoProps> = ({ user, ...rest }) => {
       sx={{
         display: 'flex',
         alignItems: 'center',
-        p: 2,
+        p: 3,
         mb: 2,
         borderBottom: '1px',
-        borderBottomColor: mode('gray.200', 'gray.700')({ colorMode }),
+        borderBottomColor: mode('gray.200', 'gray.600')({ colorMode }),
       }}
       {...rest}
     >
       <Gravatar email={user.email} />
-      <Text ml={2} fontWeight="bold">
+      <Text as="div" ml={2} fontWeight="bold">
         {user.username}
-        <Text fontSize="xs" fontWeight="normal">
+        <Text as="div" fontSize="xs" fontWeight="normal">
           {user.email}
         </Text>
       </Text>
