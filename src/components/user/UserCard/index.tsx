@@ -90,6 +90,7 @@ export const UserCard: FC<IUserCardProps> = ({ user, onDeleteUser }) => {
             <AlertDialogBody>Are you sure? You can't undo this action afterwards.</AlertDialogBody>
 
             <AlertDialogFooter>
+              {/* @ts-ignore */}
               <Button ref={cancelRef} onClick={onClose}>
                 Cancel
               </Button>
