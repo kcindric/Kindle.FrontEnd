@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import {
   jsx,
-  IconButton,
   Heading,
   Box,
   Flex,
@@ -47,12 +46,9 @@ export const MainLayout: FC = ({ children }) => {
   return (
     <>
       <Header>
-        <IconButton
-          aria-label="Menu toggle"
-          variant="ghost"
-          onClick={toggle}
-          icon={<AiOutlineMenu sx={{ width: '20px', height: '20px' }} />}
-        />
+        <Button aria-label="Menu toggle" variant="icon" onClick={toggle} px={2}>
+          <AiOutlineMenu sx={{ width: '20px', height: '20px' }} />
+        </Button>
         <Box sx={{ mx: 3, width: '1px', height: '20px', bg: 'gray.300' }} />
         <Flex sx={{ flex: 1, justifyContent: 'space-between' }}>
           <Heading as="h1" size="lg">
@@ -60,7 +56,7 @@ export const MainLayout: FC = ({ children }) => {
             Linia
           </Heading>
           <HStack spacing="24px">
-            <Button variant="ghost" onClick={toggleColorMode}>
+            <Button variant="icon" onClick={toggleColorMode}>
               {colorMode === 'light' ? <FaMoon /> : <FaSun />}
             </Button>
             {user && (
