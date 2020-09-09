@@ -65,7 +65,7 @@ export const UserCard: FC<IUserCardProps> = ({ user, onDeleteUser }) => {
               <AiOutlineEllipsis />
             </MenuButton>
             <MenuList>
-              <NextLink href={`/users/${user.userId}`} passHref>
+              <NextLink href="/users/[id]" as={`/users/${user.userId}`} passHref>
                 <MenuItem as="a">Edit</MenuItem>
               </NextLink>
               <MenuItem
