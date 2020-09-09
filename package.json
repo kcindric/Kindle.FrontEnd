@@ -26,6 +26,7 @@
     "react-hook-form": "^6.7.2",
     "react-icons": "^3.10.0",
     "react-wizard-primitive": "^2.3.0",
+    "recoil": "0.0.10",
     "swr": "^0.2.3"
   },
   "devDependencies": {

@@ -13,7 +13,8 @@ import {
   HStack,
   Text,
 } from '@chakra-ui/core';
-import { useState, FC, useCallback } from 'react';
+import { FC, useCallback } from 'react';
+import { useRecoilState } from 'recoil';
 import { mode } from '@chakra-ui/theme-tools';
 import { AiOutlineMenu, AiOutlineUpload, AiOutlineHighlight, AiOutlineUser } from 'react-icons/ai';
 import { FaMoon, FaSun } from 'react-icons/fa';
@@ -26,10 +27,11 @@ import { fetcher } from '../../../libs/fetcher';
 import { SidebarMenu, SidebarMenuItem } from '../../core/SidebarMenu';
 import useUser from '../../../libs/useUser';
 import { MenuUserInfo } from '../../MenuUserInfo';
+import { navigationCollapsedState } from '../../../recoil/atoms';
 
 export const MainLayout: FC = ({ children }) => {
   const { user, mutateUser } = useUser({ redirectTo: '/login' });
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useRecoilState(navigationCollapsedState);
   const { colorMode, toggleColorMode } = useColorMode();
 
   const toggle = () => {
