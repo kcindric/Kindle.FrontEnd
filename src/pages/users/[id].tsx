@@ -14,12 +14,12 @@ export default function User() {
 
   const { query } = useRouter();
 
-  const { data: user } = useSWR<IUser, any>(query?.id ? `/account/${query?.id}` : null);
+  const { data: user } = useSWR<IUser, any>(query?.id ? `/account/user/${query?.id}` : null);
 
   return (
     <MainLayout>
-      <Card maxW="lg" m="0 auto" p={4}>
-        {user && <UserEditInfo user={user} />}
+      <Card maxW="lg" m="0 auto" p={4} mt={100}>
+        <UserEditInfo user={user} />
       </Card>
     </MainLayout>
   );

@@ -11,7 +11,7 @@ export default function UserSettings() {
 
   return (
     <MainLayout>
-      <Card maxW="lg" m="0 auto" sx={{ p: 5 }}>
+      <Card maxW="lg" m="0 auto" mt={100} sx={{ p: 5 }}>
         {user && <UserEditInfo user={user} />}
       </Card>
     </MainLayout>
