@@ -11,8 +11,8 @@
     "type-check": "tsc"
   },
   "dependencies": {
-    "@chakra-ui/core": "^1.0.0-rc.2",
-    "@chakra-ui/theme": "^1.0.0-rc.2",
+    "@chakra-ui/core": "^1.0.0-rc.3",
+    "@chakra-ui/theme": "^1.0.0-rc.3",
     "@emotion/babel-preset-css-prop": "^10.0.27",
     "@hookform/error-message": "0.0.4",
     "cors": "^2.8.5",
@@ -22,22 +22,22 @@
     "next-connect": "^0.8.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-dropzone": "^11.0.1",
-    "react-hook-form": "^6.7.2",
-    "react-icons": "^3.10.0",
-    "react-wizard-primitive": "^2.3.0",
+    "react-dropzone": "^11.1.0",
+    "react-hook-form": "^6.8.2",
+    "react-icons": "^3.11.0",
+    "react-wizard-primitive": "^2.4.0",
     "recoil": "0.0.10",
-    "swr": "^0.2.3"
+    "swr": "^0.3.2"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^9.4.4",
+    "@next/bundle-analyzer": "^9.5.3",
     "@types/http-proxy": "^1.17.4",
     "@types/md5": "^2.2.0",
-    "@types/node": "^14.0.13",
-    "@types/react": "^16.9.38",
+    "@types/node": "^14.10.1",
+    "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
     "next-compose-plugins": "^2.2.0",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.7"
   },
   "license": "ISC"
 }
