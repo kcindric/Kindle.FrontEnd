@@ -7,12 +7,10 @@ import { UserEditInfo } from '../components/user/UserEditInfo';
 export default function UserSettings() {
   const { user } = useUser();
 
-  console.log(user);
-
   return (
     <MainLayout>
       <Card maxW="lg" m="0 auto" mt={100} sx={{ p: 5 }}>
-        {user && <UserEditInfo user={user} />}
+        <UserEditInfo user={user} />
       </Card>
     </MainLayout>
   );
