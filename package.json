@@ -27,7 +27,7 @@
     "react-icons": "^3.11.0",
     "react-wizard-primitive": "^2.4.0",
     "recoil": "0.0.10",
-    "swr": "^0.3.2"
+    "swr": "^0.3.5"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^9.5.3",

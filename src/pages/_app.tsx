@@ -19,9 +19,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <SWRConfig
           value={{
             fetcher,
-            onError: (err) => {
-              console.error(err);
-            },
+            // onError: (err) => {
+            //   console.error(err);
+            // },
           }}
         >
           <Component {...pageProps} />
