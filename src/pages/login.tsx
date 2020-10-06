@@ -9,7 +9,7 @@ import { fetcher } from '../libs/fetcher';
 import useUser from '../libs/useUser';
 import { Card } from '../components/core/Card';
 import { IErrorMessage } from '../interfaces/IErrorMessage';
-import { PasswordInput } from '../components/forms/PasswordField';
+import { PasswordField } from '../components/forms/PasswordField';
 import { useRouter } from 'next/router';
 
 interface ILoginFieldValues {
@@ -58,7 +58,7 @@ export default function Login() {
           </FormControl>
           <FormControl id="password" mb={4} isRequired isInvalid={!!errors.password}>
             <FormLabel>Password</FormLabel>
-            <PasswordInput name="password" placeholder="Enter password" ref={register({ required: true })} />
+            <PasswordField name="password" placeholder="Enter password" ref={register({ required: true })} />
             <ErrorMessage as={Text} errors={errors} name="password" color="red.600" />
           </FormControl>
           <Flex mb={3} sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
