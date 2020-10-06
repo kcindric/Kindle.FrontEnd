@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, Heading, Input, FormControl, FormLabel } from '@chakra-ui/core';
 import { useForm } from 'react-hook-form';
 

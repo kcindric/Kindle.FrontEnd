@@ -1,4 +1,4 @@
-import React, { FC, forwardRef } from 'react';
+import { FC, forwardRef } from 'react';
 import { Avatar, AvatarProps } from '@chakra-ui/core';
 import md5 from 'md5';
 
