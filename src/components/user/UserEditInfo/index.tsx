@@ -1,9 +1,10 @@
 /** @jsx jsx */
-import { jsx, Editable, EditablePreview, EditableInput, SkeletonCircle, Skeleton, Text, Button } from '@chakra-ui/core';
+import { jsx, Editable, EditablePreview, EditableInput, SkeletonCircle, Skeleton, Text } from '@chakra-ui/core';
 import { FC } from 'react';
+
 import { Gravatar } from '../../Gravatar';
 import { IUser } from '../../../interfaces/IUser';
-import { PasswordInput } from '../../forms/PasswordField';
+import { ChangePasswordForm } from './components/ChangePasswordForm';
 
 interface IUserEditInfoProps {
   user?: IUser;
@@ -30,13 +31,7 @@ export const UserEditInfo: FC<IUserEditInfoProps> = ({ user }) => {
       <Text mb={2} fontWeight="bold" textTransform="uppercase">
         Change Password:
       </Text>
-      <form>
-        <PasswordInput placeholder="Enter old password" mb={2} />
-        <PasswordInput placeholder="Enter new password" mb={4} />
-        <Button type="submit" colorScheme="yellow" width="100%">
-          Update password
-        </Button>
-      </form>
+      <ChangePasswordForm user={user} />
     </>
   );
 };

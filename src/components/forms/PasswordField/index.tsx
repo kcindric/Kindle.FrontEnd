@@ -3,7 +3,7 @@ import { jsx, InputGroup, Input, Button, InputRightElement, InputProps } from '@
 import { useState, forwardRef } from 'react';
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 
-export const PasswordInput = forwardRef<any, InputProps>(function PasswordInput(props, ref) {
+export const PasswordField = forwardRef<any, InputProps>(function PasswordField(props, ref) {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
