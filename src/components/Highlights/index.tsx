@@ -1,6 +1,7 @@
 /** @jsx jsx */
-import { jsx } from '@chakra-ui/core';
+import { jsx, Text } from '@chakra-ui/core';
 import { FC } from 'react';
+import ReactDiffViewer from 'react-diff-viewer';
 
 interface IHighlightsProps {
   items: Array<any>;
@@ -17,6 +18,14 @@ export const Highlights: FC<IHighlightsProps> = ({ items }) => {
           </div>
         </div>
       ))}
+
+      <Text>Diff viewer:</Text>
+      <ReactDiffViewer
+        oldValue="This is an old highlight."
+        newValue="This is an old highlight. But with additional content."
+        splitView={false}
+        hideLineNumbers
+      />
     </>
   );
 };
